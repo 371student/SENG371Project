@@ -7,9 +7,9 @@
 
 # Codebase / Systems
 * We would analyze 3 codebases with our tool.
-\n 1) Django
-2) Pyramid
-3) Flask
+<br /> 1) Django
+<br /> 2) Pyramid
+<br /> 3) Flask
 
 # Project Milestones
 *
