@@ -12,6 +12,7 @@
 <br /> 3) Flask
 
 # Project Milestones
+* Below are the milestones for our project. Milestone 3 is ideal; however, may not be possible.
 <br /> 1) Run Snakefood on individual commits first to see how a video of these pictures would look
 <br /> 2) Create a script to automatically retrieve all the snakefood images for a repo, then run Gource
 <br /> 3) Ideally merge files into a video and run in sync with the Gource video
