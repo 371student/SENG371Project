@@ -21,5 +21,16 @@
 3. 
   1. Further edit the script to encode all the images into a video where the frames are synchronized with a Gource visualization. Or,
   2. Edit the source code of Snakefood to display its visualizations in a way that is more condusive to our goals. Then attempt Milestone 3a.
+  3. 
+  
+#### Proof of Concept Experiment
+*Although our experiment was not completed within the lab time, this experiment sheds some light on how we will define periods of high and low growth within the software projects we are analyzing. In addition, we get a better understanding of how we are testing our hypothesis.*
+###### Assertion - Growth of a software project is inversely proportionate to increasing coupling/dependencies.
+1. Use [GitStats](https://github.com/hoxu/gitstats) on a software project (Django, for example) and consult the graphs for "File Count by Date" and "Lines of Code" to determine periods of high and low growth in the project's history.
+2. Take multiple samples from each of the high and low growth periods and run snakefood to get snapshots (as well as numerical values for dependency connections) of the project's dependencies at those time.
+3. Compare GitStats growth graphs with the dependency snapshots to determine if there is a correlation between changes in dependency/coupling growth rate and changes in a project's file count and/or lines of code produced.
+  
+#### Things to Watch Out For
+ * Excessive "include"s could possibly skew results.  
 
 
