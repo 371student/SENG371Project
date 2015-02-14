@@ -40,19 +40,18 @@ def calculate_coupling_factor():
 	Run sfood and analyze its output to calculate a 'coupling factor'.
 	This should be the number of 'edges' divided by the number of 'vertices'.
 	"""
-	""" list_of_tuples will hold a list of each tuple outputted by running sfood
-	eg) 
-	(('/home/sarah/pyramid/pyramid/tests/test_scaffolds/fixture_scaffold/+package+', 'resources.py'), (None, None))
-	('/home/sarah/pyramid', 'pyramid/view.py'))
-	etc... """
-	list_of_tuples = []
+	nodes = 0
+	count_file_lines = 0
 
 	os.system("sfood > sfood_output.txt")
 	sfood_output = open("sfood_output.txt")
 	for line in sfood_output:
-		list_of_tuples.append(line)
+		count_file_lines =count_file_lines + 1
+		if "(None, None)" in line:
+			nodes = nodes + 1
 
-	return 42
+	edges = count_file_lines - nodes
+	return (edges/nodes)
 
 
 def analyze(commits):
