@@ -1,4 +1,5 @@
 #!/usr/bin/python
+
 """
 Welcome to GDA!
 Usage instructions:
@@ -23,7 +24,7 @@ def parse_log():
 	"""
 	#for line in sys.stdin:
 	#	pass
-	return {'2015-13': ['03d964a924e0ef183c3cd78a61c043b1f74f5570']}
+	return {'2014-07-04': ['612d7478492b8c96cb138b7ee6f9b1829d046fc8']}
 
 
 def travel_to(commit):
@@ -40,17 +41,18 @@ def calculate_coupling_factor():
 	Run sfood and analyze its output to calculate a 'coupling factor'.
 	This should be the number of 'edges' divided by the number of 'vertices'.
 	"""
-	nodes = 0
-	count_file_lines = 0
+	nodes = 0.0
+	count_file_lines = 0.0
 
 	os.system("sfood > sfood_output.txt")
 	sfood_output = open("sfood_output.txt")
 	for line in sfood_output:
-		count_file_lines =count_file_lines + 1
+		count_file_lines =count_file_lines + 1.0
 		if "(None, None)" in line:
-			nodes = nodes + 1
-
-	edges = count_file_lines - nodes
+			nodes = nodes + 1.0
+	print "lines in file : " , count_file_lines
+	print "nodes : " , nodes
+	edges = float(count_file_lines - nodes)
 	return (edges/nodes)
 
 
@@ -63,7 +65,7 @@ def analyze(commits):
 	for commit in commits:
 		travel_to(commit)
 		coupling_factors.append(calculate_coupling_factor())
-
+	print "coupling factors: " , coupling_factors
 	average = sum(coupling_factors)/float(len(coupling_factors))
 	return 42
 
