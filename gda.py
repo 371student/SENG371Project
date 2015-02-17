@@ -12,7 +12,6 @@ import subprocess
 from subprocess import call
 import os
 
-
 def parse_log():
 	"""
 	Parse each line of sys.stdin and convert the logs into a nice format
