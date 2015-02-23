@@ -107,9 +107,11 @@ def main():
 		results.append(yymm + "," + str(coupling_factor))
 	#f = open('output.csv', 'w')
 	print '\n' + "Dependency Graph" + '\n'
+	print "Date ,  Coupling Factor"
 	for result in sorted(results):
 		print result 
 	print '\n' + "Growth Graph" + '\n'
+	print "Date ,  Commits , Lines Added , Lines Removed"
 	travel_to('master')
 
 
