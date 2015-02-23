@@ -78,7 +78,7 @@ def calculate_coupling_factor():
 	nodes = 0.0
 	count_file_lines = 0.0
 
-	os.system("sfood > sfood_output.txt")
+	os.system("sfood -q > sfood_output.txt")
 	sfood_output = open("sfood_output.txt")
 	for line in sfood_output:
 		count_file_lines =count_file_lines + 1.0
@@ -103,12 +103,17 @@ def analyze(commits):
 	average = sum(coupling_factors)/float(len(coupling_factors))
 	return 42
 
+def growth_factor():
+	os.system("mkdir gitstats_output")
+	os.system("gitstats . gitstats_output")
 
 def main():
 	history = parse_log()
 	for yymm in history:
 		coupling_factor = analyze(history[yymm])
-		print yymm + "," , coupling_factor
+		print yymm + "," , coupling_factor 
+	growth_factor()
+
 
 if __name__ == '__main__':
 	main()
