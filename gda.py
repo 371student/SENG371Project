@@ -6,6 +6,7 @@ Usage instructions:
 1. Navigate to the root directory of the git project you wish to analyze
 2. git log --date-order > temp.txt
 3. cat temp.txt | python /path/to/gda.py > output.csv
+4. python /path/to/gitstats.py . /output/directory
 """
 import sys
 import subprocess
@@ -98,19 +99,16 @@ def analyze(commits):
 	average = sum(coupling_factors)/float(len(coupling_factors))
 	return average
 
-def growth_factor():
-	os.system("mkdir gitstats_output")
-	os.system("gitstats . gitstats_output")
-
 def main():
 	history = parse_log()
 	results = []
 	for yymm in history:
 		coupling_factor = analyze(history[yymm])
 		results.append(yymm + "," + str(coupling_factor))
+	#f = open('output.csv', 'w')
 	for result in sorted(results):
-		print result 
-	#growth_factor()
+		print result
+	travel_to('master')
 
 
 if __name__ == '__main__':
