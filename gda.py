@@ -106,8 +106,10 @@ def main():
 		coupling_factor = analyze(history[yymm])
 		results.append(yymm + "," + str(coupling_factor))
 	#f = open('output.csv', 'w')
+	print '\n' + "Dependency Graph" + '\n'
 	for result in sorted(results):
-		print result
+		print result 
+	print '\n' + "Growth Graph" + '\n'
 	travel_to('master')
 
 
