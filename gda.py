@@ -12,6 +12,22 @@ import subprocess
 from subprocess import call
 import os
 
+def month_to_num(month):
+	return {
+		'Jan': '01',
+		'Feb': '02',
+		'Mar': '03',
+		'Apr': '04',
+		'May': '05',
+		'Jun': '06',
+		'Jul': '07',
+		'Aug': '08',
+		'Sep': '09',
+		'Oct': '10',
+		'Nov': '11',
+		'Dec': '12'
+	}[month]
+
 def parse_log():
 	"""
 	Parse each line of sys.stdin and convert the logs into a nice format
@@ -21,9 +37,28 @@ def parse_log():
 	{'2015-02': [648e516b8d5694c01a225fe27429f0bf7776fb43, 648e516b8d5694c01a225fe27429f0bf7776fb43], '2015-01': [648e516b8d5694c01a225fe27429f0bf7776fb43]}
 	NOTE: If a yymm has no commits, it should not appear as a key
 	"""
-	#for line in sys.stdin:
-	#	pass
-	return {'2014-07-04': ['612d7478492b8c96cb138b7ee6f9b1829d046fc8']}
+
+	history = {}
+	temp_commit = ''
+	for line in sys.stdin:
+		print history
+		words = line.split(' ')
+		if words[0] == 'commit':
+			temp_commit = words[1].rstrip()
+		elif words[0] == 'Date:':
+			year = words[7]
+			month = month_to_num(words[4])
+			yymm = year + '-' + month
+			if yymm in history:
+				temp = history[yymm]
+				temp.append(temp_commit)
+				history[yymm] = temp
+			else:
+				history[yymm] = [temp_commit]
+		else:
+			pass
+
+	return history
 
 
 def travel_to(commit):
@@ -73,7 +108,7 @@ def main():
 	history = parse_log()
 	for yymm in history:
 		coupling_factor = analyze(history[yymm])
-		print yymm + "," , coupling_factor 
+		print yymm + "," , coupling_factor
 
 if __name__ == '__main__':
 	main()
