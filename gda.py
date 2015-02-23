@@ -79,7 +79,7 @@ def calculate_coupling_factor():
 	count_file_lines = 0.0
 
 	os.system("sfood -q > sfood_output.txt")
-	sfood_output = open("sfood_output.txt")
+	sfood_output = open("sfood_output.txt", 'r')
 	for line in sfood_output:
 		count_file_lines =count_file_lines + 1.0
 		if "(None, None)" in line:
@@ -87,6 +87,7 @@ def calculate_coupling_factor():
 	print "lines in file : " , count_file_lines
 	print "nodes : " , nodes
 	edges = float(count_file_lines - nodes)
+	sfood_output.close()
 	return (edges/nodes)
 
 
