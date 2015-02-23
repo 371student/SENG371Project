@@ -41,7 +41,7 @@ def parse_log():
 	history = {}
 	temp_commit = ''
 	for line in sys.stdin:
-		print history
+		#print history
 		words = line.split(' ')
 		if words[0] == 'commit':
 			temp_commit = words[1].rstrip()
