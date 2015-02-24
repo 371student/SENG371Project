@@ -63,6 +63,8 @@ Date |  		Commits | Lines Added | Lines Removed
 *Resulting graph from comparing Coupling Factor to Growth Factor*
 ![alt tag](http://i.imgur.com/Vd4BVcv.png)
 
+As is evidenced, there is a strong correlation between the growth and coupling/dependencies in Django. Further work is needed to more completely understand the relationship between coupling and growth. It is still unclear if there is a one or two-way causal relationship between the two factors.
+
 #### Project Milestones
 *Below are the milestones for our project. Milestone 3 is ideal; however, may not be possible.*
 
