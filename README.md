@@ -4,6 +4,8 @@
 
 #### Methodology
 * Write a script that would iteratively move through the history of the master branch of a software project, and then use Snakefood to capture the complexity of the dependency graph at that point in time. 
+* Edit the source code of GitStats to serve monthly growth information about the same project.
+* Analyze the data obtained in the ways mentioned above.
 
 #### Data Sources
 * We will test our research question by analyzing three codebases with our tool.
