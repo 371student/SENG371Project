@@ -1,8 +1,8 @@
 # SENG371Project
 #### Current Usage Instructions
-1. git clone <this repo>
+1. git clone \<this repo\>
 2. sudo apt-get install snakefood
-3. git clone <repo to analyze>
+3. git clone \<repo to analyze\>
 4. Navigate to the root directory of the git project you wish to analyze
 5. git log --date-order > temp.txt
 6. cat temp.txt | python /path/to/gda.py > output.csv
