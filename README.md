@@ -66,7 +66,6 @@ Date |  		Commits | Lines Added | Lines Removed
 As is evidenced, there is a strong correlation between the growth and coupling/dependencies in Django. Further work is needed to more completely understand the relationship between coupling and growth. It is still unclear if there is a one or two-way causal relationship between the two factors. The analysis of multiple repositories would reduce threats to the validity of our claims.
 
 #### Project Milestones
-*Below are the milestones for our project. Milestone 3 is ideal; however, may not be possible.*
 
 1. Feasibility Analysis (Feb. 3) - Experiment with Snakefood and GitStats to verify that the data we need (in terms of coupling/dependencies and growth) is available. Record the run-time for these events and extrapolate over an entire cycle of our potential tool.
 2. Tool Creation (Feb. 22)
