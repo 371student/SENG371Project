@@ -96,16 +96,17 @@ As is evidenced, there is a strong correlation between the growth and coupling/d
 # Estimation and Timeline
 
 #### Task Breakdown and Estimations 
-Task 	                  |                               Importance |              Effort 
+Task | Importance | Effort 
 ---- | ---- | ---- 
-Streamline the process  |		8                             |     7  
-There should be 1 file created at runtime (the output.csv)|		6            |      7
-Run gitstats in quiet mode   |   9   | 8
-Prompt user for git info, repo link etc .. instead of following the readme   | 5  | 5
-Inform user of current script status during runtime   | 3 | 4
-Incorporate matplotlib into script  | 10   |  5
-Increase performance    |  7|  10
-Look into non-python repositories | 6 |  9
+Streamline the process | 8 | 7
+There should be 1 file created at runtime (the output.csv)| 6 | 7
+Run gitstats in quiet mode | 9 | 8
+Prompt user for git info, repo link etc .. instead of following the readme | 5 | 5
+Inform user of current script status during runtime | 3 | 4
+Incorporate matplotlib into script | 10 | 5
+Increase performance | 7 | 10
+Look into non-python repositories | 6 | 9
+Further analysis of data | 10 | 8
 
 
 
@@ -117,6 +118,7 @@ Look into non-python repositories | 6 |  9
 * Look into gitstats alternatives 
 
 #### Sprint 2 Plan (March 24th - April 7th)
+* Further analysis of data (new relationships, finding correlations/causations)
 * Streamline the process
 * Prompt user for git info, repo link etc .. instead of following the readme 
 
@@ -135,15 +137,16 @@ Look into non-python repositories | 6 |  9
 
 Task | Chris | Richard  | Sarah
 ---- | ---- | ---- | ---- 
-Non-python repositories |   X    | X   | X
-Incorporate matplotlib |   X |  | 
-1 file created |  |X | X
-gitstats alternatives | X | X| X
+Non-python repositories | X | X | X
+Incorporate matplotlib | X | | 
+1 file created | | X | X
+gitstats alternatives | X | X | X
 Streamline the process | X | X | X
 Prompt user for info | | | X
-Increase performance |    X   |  X |
-Inform user script status| | |X
-Run gitstats in quiet mode| | X |
+Increase performance | X |  X |
+Inform user script status | | | X
+Run gitstats in quiet mode | | X |
+Further analysis of data | X | X | X
 
 
 
