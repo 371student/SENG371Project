@@ -82,7 +82,7 @@ As is evidenced, there is a strong correlation between the growth and coupling/d
 
 #### Future Work
 
-1. Automate/simplify program flow - Our next step is to remove intermediate steps for users by streamlining the entire application process. Ideally a user could simply run our tool with the location of a cloned Git repository as a parameter (possibly with a time-increment parameter as well), and our tool would output the information.
+1. Automate/simplify program flow - Our next step is to remove intermediate steps for users by streamlining the entire application process. Ideally a user could simply run our tool with tFurther analysis of data | X | X | Xhe location of a cloned Git repository as a parameter (possibly with a time-increment parameter as well), and our tool would output the information.
 2. Graph output - As an extension to automation, we would like our tool to produce graphical representations of the outputted data, to make it immediately meaningful for users.
 3. Parallelize computation / improve performance at scale - Currently, our tool will run for hours on sufficiently large repositories. By refactoring our code to take advantage of threading or distributed computing, we could achieve much faster computation. 
 
@@ -96,17 +96,17 @@ As is evidenced, there is a strong correlation between the growth and coupling/d
 # Estimation and Timeline
 
 #### Task Breakdown and Estimations 
-Task | Importance | Effort 
----- | ---- | ---- 
-Streamline the process | 8 | 7
-There should be 1 file created at runtime (the output.csv)| 6 | 7
-Run gitstats in quiet mode | 9 | 8
-Prompt user for git info, repo link etc .. instead of following the readme | 5 | 5
-Inform user of current script status during runtime | 3 | 4
-Incorporate matplotlib into script | 10 | 5
-Increase performance | 7 | 10
-Look into non-python repositories | 6 | 9
-Further analysis of data | 10 | 8
+Task | Importance | Effort | Risk
+---- | ---- | ---- | ----
+Streamline the process | 8 | 7 | 2
+There should be 1 file created at runtime (the output.csv)| 6 | 7 | 3
+Run gitstats in quiet mode | 9 | 8 | 1
+Prompt user for git info, repo link etc .. instead of following the readme | 5 | 5 | 1
+Inform user of current script status during runtime | 3 | 4 | 1
+Incorporate matplotlib into script | 10 | 5 | 4
+Increase performance | 7 | 10 | 9
+Look into non-python repositories | 6 | 9 | 0
+Further analysis of data | 10 | 8 | 3
 
 
 
@@ -137,16 +137,19 @@ Further analysis of data | 10 | 8
 
 Task | Chris | Richard  | Sarah
 ---- | ---- | ---- | ---- 
+Sprint 1 |  |  | 
 Non-python repositories | X | X | X
 Incorporate matplotlib | X | | 
 1 file created | | X | X
 gitstats alternatives | X | X | X
+Sprint 2 |  |  | 
 Streamline the process | X | X | X
 Prompt user for info | | | X
+Further analysis of data | X | X | X
+Sprint 3 |  |  | 
 Increase performance | X |  X |
 Inform user script status | | | X
 Run gitstats in quiet mode | | X |
-Further analysis of data | X | X | X
 
 
 
