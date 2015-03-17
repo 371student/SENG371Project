@@ -81,6 +81,9 @@ def calculate_coupling_factor():
 			nodes = nodes + 1.0
 	edges = float(count_file_lines - nodes)
 	sfood_output.close()
+	#Prevent division by 0. Nodes should always be positive.
+	if nodes <= 0:
+		nodes = 1
 	return (edges/nodes)
 
 
