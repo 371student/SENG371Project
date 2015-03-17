@@ -107,6 +107,7 @@ Incorporate matplotlib into script | 10 | 5 | 4
 Increase performance | 7 | 10 | 9
 Look into non-python repositories | 6 | 9 | 0
 Further analysis of data | 10 | 8 | 3
+Create webapp | 2 | 9 | 8
 
 
 
@@ -126,6 +127,7 @@ Further analysis of data | 10 | 8 | 3
 * Increase performance
 * Inform user of current script status during runtime 
 * Run gitstats in quiet mode
+* Create webapp
 
 
 
@@ -150,6 +152,7 @@ Sprint 3 |  |  |
 Increase performance | X |  X |
 Inform user script status | | | X
 Run gitstats in quiet mode | | X |
+Create webapp | X | X | X 
 
 
 
