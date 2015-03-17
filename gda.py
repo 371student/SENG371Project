@@ -9,9 +9,7 @@ Usage instructions:
 4. python /path/to/gitstats.py . /output/directory
 """
 import sys
-import subprocess
 from subprocess import call
-import os
 
 def month_to_num(month):
 	return {
@@ -75,7 +73,7 @@ def calculate_coupling_factor():
 	"""
 	nodes = 0.0
 	count_file_lines = 0.0
-	os.system("sfood -q > sfood_output.txt")
+	call("sfood -q > sfood_output.txt", shell=True)
 	sfood_output = open("sfood_output.txt")
 	for line in sfood_output:
 		count_file_lines =count_file_lines + 1.0
@@ -109,9 +107,14 @@ def main():
 	print '\n' + "Dependency Graph" + '\n'
 	print "Date ,  Coupling Factor"
 	for result in sorted(results):
-		print result 
+		print result
 	print '\n' + "Growth Graph" + '\n'
-	print "Date ,  Commits , Lines Added , Lines Removed"
+	print "Date ,  Commits"
+	commit_logs = []
+	for yymm in history:
+		 commit_logs.append(yymm + ',' + str(len(history[yymm])))
+	for i in sorted(commit_logs):
+		print i
 	travel_to('master')
 
 
