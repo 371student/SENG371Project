@@ -1,7 +1,10 @@
+# WARNING - this code was made using python 3.4
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
+# WARNING - this might not be needed in python 2.7
 def bytedate2num(fmt):
     def converter(b):
         return mdates.strpdate2num(fmt)(b.decode('ascii'))
