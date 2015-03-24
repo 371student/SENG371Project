@@ -2,14 +2,11 @@ import bottle
 import json
 import sys
 from subprocess import call
+from bottle import static_file
 
 @bottle.get('/')
 def index():
-    return """
-        <a>
-            it works!
-        </a>
-    """
+    return static_file("index.html",root="./")
 
 """
 Welcome to GDA!
