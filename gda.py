@@ -1,15 +1,15 @@
-import bottle
-import json
+#!/usr/bin/python
+
+"""
+Welcome to GDA!
+Usage instructions:
+1. Navigate to the root directory of the git project you wish to analyze
+2. git log --date-order > temp.txt
+3. cat temp.txt | python /path/to/gda.py > output.csv
+4. python /path/to/gitstats.py . /output/directory
+"""
 import sys
 from subprocess import call
-
-@bottle.get('/')
-def index():
-    return """
-        <a>
-            it works!
-        </a>
-    """
 
 def month_to_num(month):
   return {
@@ -120,16 +120,5 @@ def main():
     print i
   travel_to('master')
 
-@bottle.post('/move')
-def analyzerepo():
-    data = bottle.request.json
-    return json.dumps({})
-
-@bottle.post('/end')
-def end():
-    # data = bottle.request.json
-
-    return json.dumps({})
-
-# Expose WSGI app
-application = bottle.default_app()
+if __name__ == '__main__':
+  main()

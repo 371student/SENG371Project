@@ -17,9 +17,9 @@
 * Write a script that would iteratively move through the history of the master branch of a software project, and then use [Snakefood](http://furius.ca/snakefood/) to capture the complexity of the dependency graph at that point in time. This complexity metric - or “Coupling Factor” - will be calculated as the ratio of dependency-graph edges to nodes (at that point in time). (Note: as Snakefood only provides coupling information for Python projects, our tool is also restricted to Python projects at this time)
 * Edit the source code of [GitStats](https://github.com/hoxu/gitstats) to serve monthly-growth information about the same project. This growth metric - or “Growth Factor” - will be calculated as follows:
   1. Divide the average of Commits/Month by the average of the Coupling Factor.
-  2. Multiply this number by 4.
-  3. Growth factor is equal to to Commits/Month divided by the number obtained in 2.
-* Compare the information obtained in the ways mentioned above by plotting the two factors over time, and against one-another. The graph comparing the Coupling Factor and Growth Factor for a particular project can then be analyzed to determine if the project’s complexity is increasing over time relative to its growth. The graph can also be compared to the comparison graphs of other projects, and conclusions about project health can be drawn.
+    2. Multiply this number by 4.
+      3. Growth factor is equal to to Commits/Month divided by the number obtained in 2.
+      * Compare the information obtained in the ways mentioned above by plotting the two factors over time, and against one-another. The graph comparing the Coupling Factor and Growth Factor for a particular project can then be analyzed to determine if the project’s complexity is increasing over time relative to its growth. The graph can also be compared to the comparison graphs of other projects, and conclusions about project health can be drawn.
 
 #### Data Sources
 * We will test our research question by analyzing three codebases with our tool.
@@ -33,52 +33,52 @@
 
 Dependency Graph
 
- Date |  		Coupling Factor 
- ---- | ---- 
- 2008-07 |		2.44444444444   
- 2008-08 |		2.75            
- 2008-09 |		3.0             
- 2008-10 |		2.98591549296   
- 2008-11 |		3.10526315789   
- 2008-12 |		3.11842105263   
- 2009-01 |		3.29347826087   
- 2009-02 |		3.28260869565   
- 2009-03 |		3.28260869565   
- 2009-04 |		3.29032258065   
-		…
+ Date |         Coupling Factor 
+  ---- | ---- 
+   2008-07 |        2.44444444444   
+    2008-08 |       2.75            
+     2008-09 |      3.0             
+      2008-10 |     2.98591549296   
+       2008-11 |        3.10526315789   
+        2008-12 |       3.11842105263   
+         2009-01 |      3.29347826087   
+          2009-02 |     3.28260869565   
+           2009-03 |        3.28260869565   
+            2009-04 |       3.29032258065   
+                    …
 
-Date |  		Commits | Lines Added | Lines Removed
----- | ---- | ---- | ---- 
-2015-02 |		92 |	    4172 |	            489
-2015-01 |		43 |	    0 |	             0
-2014-12 |	  52 |	    11008 |            424
-2014-11 |		97 |	     354 |	             133
-2014-10 |		16 |	     60 |                  28
-2014-09 |		12 |	     14 |	              10
-2014-08 |		20 |	      0 |	               0
-2014-07 |		51 |	      713 |	               231
-2014-06 |		10 |	      38 |	               3
-2014-05 |		39 |	      389 |	               742
-2014-04 |		93 |	      837 |	              1075
-2014-03 |		30 |	      0 |	               0
-        		 …
+                    Date |          Commits | Lines Added | Lines Removed
+                    ---- | ---- | ---- | ---- 
+                    2015-02 |       92 |        4172 |              489
+                    2015-01 |       43 |        0 |              0
+                    2014-12 |     52 |      11008 |            424
+                    2014-11 |       97 |         354 |               133
+                    2014-10 |       16 |         60 |                  28
+                    2014-09 |       12 |         14 |                 10
+                    2014-08 |       20 |          0 |                  0
+                    2014-07 |       51 |          713 |                231
+                    2014-06 |       10 |          38 |                 3
+                    2014-05 |       39 |          389 |                742
+                    2014-04 |       93 |          837 |               1075
+                    2014-03 |       30 |          0 |                  0
+                                     …
 
-*Resulting graph from comparing Coupling Factor to Growth Factor*
-![alt tag](http://i.imgur.com/Vd4BVcv.png)
-![alt tag](http://i.imgur.com/6JPyAdx.png)
-![alt tag](http://i.imgur.com/GdRLz9O.png)
+                                     *Resulting graph from comparing Coupling Factor to Growth Factor*
+                                     ![alt tag](http://i.imgur.com/Vd4BVcv.png)
+                                     ![alt tag](http://i.imgur.com/6JPyAdx.png)
+                                     ![alt tag](http://i.imgur.com/GdRLz9O.png)
 
-As is evidenced, there is a strong correlation between the growth and coupling/dependencies in Django. Further work is needed to more completely understand the relationship between coupling and growth. It is still unclear if there is a one or two-way causal relationship between the two factors. The analysis of multiple repositories would reduce threats to the validity of our claims.
+                                     As is evidenced, there is a strong correlation between the growth and coupling/dependencies in Django. Further work is needed to more completely understand the relationship between coupling and growth. It is still unclear if there is a one or two-way causal relationship between the two factors. The analysis of multiple repositories would reduce threats to the validity of our claims.
 
 #### Project Milestones
 
 1. Feasibility Analysis (Feb. 3) - Experiment with Snakefood and GitStats to verify that the data we need (in terms of coupling/dependencies and growth) is available. Record the run-time for these events and extrapolate over an entire cycle of our potential tool.
 2. Tool Creation (Feb. 22)
   1. Write a Python program to iterate through the commit history of a GitHub project and run Snakefood at evenly spaced points throughout a project’s history to obtain dependency/coupling information (Coupling Factor). Output this information to a machine-readable format.
-  2. Edit the source code for GitStats to output monthly growth information (Growth Factor) in the same a machine-readable format as the dependency/coupling information.
-3. Data Analysis (Feb. 23)
-  1. Use the machine-readable information obtained to plot coupling/dependency data against growth data.
-  2. Analyze the data acquired and find other meaningful relationships between coupling and growth, and use this feedback to drive future development.
+    2. Edit the source code for GitStats to output monthly growth information (Growth Factor) in the same a machine-readable format as the dependency/coupling information.
+    3. Data Analysis (Feb. 23)
+      1. Use the machine-readable information obtained to plot coupling/dependency data against growth data.
+        2. Analyze the data acquired and find other meaningful relationships between coupling and growth, and use this feedback to drive future development.
 
 #### Future Work
 
