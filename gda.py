@@ -1,15 +1,4 @@
-import bottle
-import json
-import sys
-from subprocess import call
-
-@bottle.get('/')
-def index():
-    return """
-        <a>
-            it works!
-        </a>
-    """
+#!/usr/bin/python
 
 """
 Welcome to GDA!
@@ -19,6 +8,9 @@ Usage instructions:
 3. cat temp.txt | python /path/to/gda.py > output.csv
 4. python /path/to/gitstats.py . /output/directory
 """
+import sys
+from subprocess import call
+
 def month_to_num(month):
   return {
     'Jan': '01',
@@ -129,29 +121,5 @@ def main():
   travel_to('master')
 
 
-
-@bottle.post('/start')
-def start():
-    # data = bottle.request.json
-
-    return json.dumps({
-        'name': 'nagini',
-        'color': '#22ff00',
-        'head_url': 'https://raw.githubusercontent.com/james-gray/nagini/master/SnakeHead.png',
-        'taunt': choice(smacktalk)
-    })
-
-
-@bottle.post('/move')
-def move():
-    data = bottle.request.json
-    return json.dumps({})
-
-@bottle.post('/end')
-def end():
-    # data = bottle.request.json
-
-    return json.dumps({})
-
-# Expose WSGI app
-application = bottle.default_app()
+if __name__ == '__main__':
+  main()
