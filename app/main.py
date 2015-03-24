@@ -11,14 +11,6 @@ def index():
         </a>
     """
 
-"""
-Welcome to GDA!
-Usage instructions:
-1. Navigate to the root directory of the git project you wish to analyze
-2. git log --date-order > temp.txt
-3. cat temp.txt | python /path/to/gda.py > output.csv
-4. python /path/to/gitstats.py . /output/directory
-"""
 def month_to_num(month):
   return {
     'Jan': '01',
@@ -128,22 +120,8 @@ def main():
     print i
   travel_to('master')
 
-
-
-@bottle.post('/start')
-def start():
-    # data = bottle.request.json
-
-    return json.dumps({
-        'name': 'nagini',
-        'color': '#22ff00',
-        'head_url': 'https://raw.githubusercontent.com/james-gray/nagini/master/SnakeHead.png',
-        'taunt': choice(smacktalk)
-    })
-
-
 @bottle.post('/move')
-def move():
+def analyzerepo():
     data = bottle.request.json
     return json.dumps({})
 
