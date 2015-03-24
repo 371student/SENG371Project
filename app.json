@@ -1,10 +1,8 @@
 {
   "name": "gentle-wildwood-6040",
-  "description": "A BattleSnake AI written in Python.",
+  "description": "371 project application",
   "keywords": [
-    "battlesnake",
-    "sendwithus"
   ],
-  "website": "http://battlesnake.io",
-  "repository": "https://github.com/james-gray/nagini"
+  "website": "http://gentle-wildwood-6040.herokuapp.com",
+  "repository": "https://github.com/371student/SENG371Project"
 }
