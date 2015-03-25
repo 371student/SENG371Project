@@ -125,30 +125,5 @@ def main():
     print i
   travel_to('master')
 
-
-
-@bottle.post('/start')
-def start():
-    # data = bottle.request.json
-
-    return json.dumps({
-        'name': 'nagini',
-        'color': '#22ff00',
-        'head_url': 'https://raw.githubusercontent.com/james-gray/nagini/master/SnakeHead.png',
-        'taunt': choice(smacktalk)
-    })
-
-
-@bottle.post('/move')
-def move():
-    data = bottle.request.json
-    return json.dumps({})
-
-@bottle.post('/end')
-def end():
-    # data = bottle.request.json
-
-    return json.dumps({})
-
 # Expose WSGI app
 application = bottle.default_app()
