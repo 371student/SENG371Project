@@ -2,24 +2,23 @@ import bottle
 import json
 import sys
 from subprocess import call
-from bottle import static_file
 
 @bottle.get('/')
 def index():
-    return static_file("index.html",root="./")
+    return bottle.static_file("index.html",root="./")
 
 @bottle.get('/css/<filename:re:.*\.css>')
 def stylesheets(filename):
-    return static_file(filename, root='./css')
+    return bottle.static_file(filename, root='./css')
 @bottle.get('/images/<filename:re:.*\.(jpg|png|gif|ico)>')
 def images(filename):
-    return static_file(filename, root='./images')
+    return bottle.static_file(filename, root='./images')
 @bottle.get('/js/<filename:re:.*\.js>')
 def javascript(filename):
-    return static_file(filename, root='./js')
+    return bottle.static_file(filename, root='./js')
 @bottle.get('/fonts/<filename:re:.*\.(eot|ttf|woff|svg)>')
 def fonts(filename):
-    return static_file(filename, root='./fonts')
+    return bottle.static_file(filename, root='./fonts')
 
 """
 Welcome to GDA!
