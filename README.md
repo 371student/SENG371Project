@@ -6,7 +6,6 @@
 4. Navigate to the root directory of the git project you wish to analyze
 5. git log --date-order > temp.txt
 6. cat temp.txt | python /path/to/gda.py > output.csv
-7. python /path/to/gitstats.py . /output/directory
 
 #### Project Question
 * How is the growth of a software project affected by coupling? 
@@ -153,6 +152,5 @@ Increase performance | X |  X |
 Inform user script status | | | X
 Run gitstats in quiet mode | | X |
 Create webapp | X | X | X 
-
 
 
