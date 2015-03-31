@@ -1,141 +1,56 @@
 import bottle
 import json
-import sys
-from subprocess import call
+from bottle.ext.mongo import MongoPlugin
+import os
+from bson.json_util import dumps
 
-@bottle.get('/')
+
+app = bottle.Bottle()
+db_user = os.environ.get('DB_USER')
+db_pass = os.environ.get('DB_PASS')
+plugin = MongoPlugin(uri='mongodb://%s:%s@ds031278.mongolab.com:31278/seng371'%(db_user, db_pass), db="seng371", json_mongo=True)
+app.install(plugin)
+
+@app.get('/')
 def index():
     return bottle.static_file("index.html",root="./")
 
-@bottle.get('/css/<filename:re:.*\.css>')
+@app.get('/css/<filename:re:.*\.css>')
 def stylesheets(filename):
     return bottle.static_file(filename, root='./css')
-@bottle.get('/images/<filename:re:.*\.(jpg|png|gif|ico)>')
+
+@app.get('/images/<filename:re:.*\.(jpg|png|gif|ico)>')
 def images(filename):
     return bottle.static_file(filename, root='./images')
-@bottle.get('/js/<filename:re:.*\.js>')
+
+@app.get('/js/<filename:re:.*\.js>')
 def javascript(filename):
     return bottle.static_file(filename, root='./js')
-@bottle.get('/fonts/<filename:re:.*\.(eot|ttf|woff|svg)>')
+
+@app.get('/fonts/<filename:re:.*\.(eot|ttf|woff|svg)>')
 def fonts(filename):
     return bottle.static_file(filename, root='./fonts')
 
 """
-Welcome to GDA!
-Usage instructions:
-1. Navigate to the root directory of the git project you wish to analyze
-2. git log --date-order > temp.txt
-3. cat temp.txt | python /path/to/gda.py > output.csv
-4. python /path/to/gitstats.py . /output/directory
+Post to this url to add a git repository to the queue
+{
+  "url": "<git url>",
+}
 """
-def month_to_num(month):
-  return {
-    'Jan': '01',
-    'Feb': '02',
-    'Mar': '03',
-    'Apr': '04',
-    'May': '05',
-    'Jun': '06',
-    'Jul': '07',
-    'Aug': '08',
-    'Sep': '09',
-    'Oct': '10',
-    'Nov': '11',
-    'Dec': '12'
-  }[month]
+@app.post('/api/add')
+def add_repo(mongodb):
+  data = bottle.request.json
+  if mongodb['repos'].find({'url': data['url']}).count() != 0:
+    return
+  else:
+    mongodb['repos'].insert({'url': data['url'], 'status': 'queued', 'data': []})
 
-def parse_log():
-  """
-  Parse each line of sys.stdin and convert the logs into a nice format
-  For every yymm (2015-02 etc.) we want all of the commit ids
-  This should be stored as a dictionary with yymm as the key
-  and a list of commit ids as the value.
-  {'2015-02': [648e516b8d5694c01a225fe27429f0bf7776fb43, 648e516b8d5694c01a225fe27429f0bf7776fb43], '2015-01': [648e516b8d5694c01a225fe27429f0bf7776fb43]}
-  NOTE: If a yymm has no commits, it should not appear as a key
-  """
-  history = {}
-  temp_commit = ''
-  for line in sys.stdin:
-    words = line.split(' ')
-    if words[0] == 'commit':
-      temp_commit = words[1].rstrip()
-    elif words[0] == 'Date:':
-      year = words[7]
-      month = month_to_num(words[4])
-      yymm = year + '-' + month
-      if yymm in history:
-        temp = history[yymm]
-        temp.append(temp_commit)
-        history[yymm] = temp
-      else:
-        history[yymm] = [temp_commit]
-    else:
-      pass
-
-  return history
-
-
-def travel_to(commit):
-  """
-  Run git checkout <commit> to reset the project to the state it was in after
-  the given commit
-  """
-  call(["git", "checkout" , commit])
-
-
-def calculate_coupling_factor():
-  """
-  Run sfood and analyze its output to calculate a 'coupling factor'.
-  This should be the number of 'edges' divided by the number of 'vertices'.
-  """
-  nodes = 0.0
-  count_file_lines = 0.0
-  call("sfood -q > sfood_output.txt", shell=True)
-  sfood_output = open("sfood_output.txt")
-  for line in sfood_output:
-    count_file_lines =count_file_lines + 1.0
-    if "(None, None)" in line:
-      nodes = nodes + 1.0
-  edges = float(count_file_lines - nodes)
-  sfood_output.close()
-  #Prevent division by 0. Nodes should always be positive.
-  if nodes <= 0:
-    nodes = 1
-  return (edges/nodes)
-
-
-def analyze(commits):
-  """
-  Analyze the 'coupling factor' for each of the commits given.
-  Return the average of all calculated 'coupling factors' over these commits
-  """
-  coupling_factors = []
-  for commit in commits:
-    travel_to(commit)
-    coupling_factors.append(calculate_coupling_factor())
-    break # Hack for now, allow for multiple commits/month later
-  average = sum(coupling_factors)/float(len(coupling_factors))
-  return average
-
-def main():
-  history = parse_log()
-  results = []
-  for yymm in history:
-    coupling_factor = analyze(history[yymm])
-    results.append(yymm + "," + str(coupling_factor))
-  #f = open('output.csv', 'w')
-  print '\n' + "Dependency Graph" + '\n'
-  print "Date ,  Coupling Factor"
-  for result in sorted(results):
-    print result
-  print '\n' + "Growth Graph" + '\n'
-  print "Date ,  Commits"
-  commit_logs = []
-  for yymm in history:
-     commit_logs.append(yymm + ',' + str(len(history[yymm])))
-  for i in sorted(commit_logs):
-    print i
-  travel_to('master')
+"""
+Get this url to get all repositories in the db
+"""
+@app.get('/api/repos')
+def get_repos(mongodb):
+  return dumps(mongodb['repos'].find())
 
 # Expose WSGI app
-application = bottle.default_app()
+application = app
