@@ -11,7 +11,11 @@ angular.module('app.routes', ['ngRoute'])
 		templateUrl	: 'app/views/pages/home.html',
 		controller	: 'mainController',
 		controllerAs: 'main' 
-	});
+	}).
+	
+	otherwise({
+        redirectTo: '/'
+    });
 
 	// route for the data page
 	// .when('/data', {
