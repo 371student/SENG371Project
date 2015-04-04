@@ -1,0 +1,8 @@
+{
+  "name": "GDAapp",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~4.9.1",
+    "nodemon": "^1.3.7"
+  }
+}
