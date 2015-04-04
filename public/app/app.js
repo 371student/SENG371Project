@@ -1,4 +1,4 @@
-angular.module('GDAapp', ['routerRoutes'])
+angular.module('GDAapp', ['app.routes'])
 
 // create the controllers
 // this will be the controller for the ENTIRE site
