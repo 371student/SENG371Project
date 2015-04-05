@@ -36,11 +36,11 @@ def pages(filename):
     return bottle.static_file(filename, root='public/app/views/pages')
 
 @app.get('/app/controllers/<filename:re:.*\.js>')
-def pages(filename):
+def controllers(filename):
     return bottle.static_file(filename, root='public/app/controllers')
 
 @app.get('/app/services/<filename:re:.*\.js>')
-def pages(filename):
+def services(filename):
     return bottle.static_file(filename, root='public/app/services')
 
 
