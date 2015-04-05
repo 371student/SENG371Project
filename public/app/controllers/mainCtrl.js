@@ -26,11 +26,4 @@ angular.module('mainCtrl', ['repoService'])
 		$location.path('/data');
 	};
 
-// // data page specific controller
-// .controller('dataController', function() {
-// 	// bind "this" to vm (view-model)
-// 	var vm = this;
-
-// 	vm.message = 'Data page test message';
-
 });
