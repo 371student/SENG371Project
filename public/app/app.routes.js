@@ -10,19 +10,19 @@ angular.module('app.routes', ['ngRoute'])
 	.when('/', {
 		templateUrl	: 'app/views/pages/home.html',
 		controller	: 'mainController',
-		controllerAs: 'main' 
-	}).
-	
-	otherwise({
-        redirectTo: '/'
-    });
+		controllerAs: 'home' 
+	})
 
 	// route for the data page
-	// .when('/data', {
-	// 	templateUrl	: 'app/views/pages/data.html',
-	// 	controller	: 'dataController',
-	// 	controllerAs: 'data' 
-	// });
+	.when('/data', {
+		templateUrl	: 'app/views/pages/data.html',
+		controller	: 'mainController',
+		controllerAs: 'data' 
+	})
+
+	.otherwise({
+        redirectTo: '/'
+    });
 
 	// set our app up to have pretty URLs
 	$locationProvider.html5Mode(true);
