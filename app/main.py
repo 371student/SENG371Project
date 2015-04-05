@@ -13,23 +13,28 @@ app.install(plugin)
 
 @app.get('/')
 def index():
-    return bottle.static_file("index.html",root="./")
+    return bottle.static_file("index.html",root="public/app/views")
 
-@app.get('/css/<filename:re:.*\.css>')
+@app.get('/assets/css/<filename:re:.*\.css>')
 def stylesheets(filename):
-    return bottle.static_file(filename, root='./css')
+    return bottle.static_file(filename, root='public/assets/css')
 
 @app.get('/images/<filename:re:.*\.(jpg|png|gif|ico)>')
 def images(filename):
-    return bottle.static_file(filename, root='./images')
+    return bottle.static_file(filename, root='public/assets/images')
 
-@app.get('/js/<filename:re:.*\.js>')
-def javascript(filename):
-    return bottle.static_file(filename, root='./js')
+@app.get('/assets/libs/<filename:re:.*\.js>')
+def javascript_libs(filename):
+    return bottle.static_file(filename, root='public/assets/libs')
 
-@app.get('/fonts/<filename:re:.*\.(eot|ttf|woff|svg)>')
-def fonts(filename):
-    return bottle.static_file(filename, root='./fonts')
+@app.get('/app/<filename:re:.*\.js>')
+def javascript_app(filename):
+    return bottle.static_file(filename, root='public/app')
+
+@app.get('/app/views/pages/<filename:re:.*\.html>')
+def pages(filename):
+    return bottle.static_file(filename, root='public/app/views/pages')
+
 
 """
 Post to this url to add a git repository to the queue
