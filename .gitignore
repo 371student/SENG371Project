@@ -1,6 +1,10 @@
 # Node Modules (just use "npm install" to get)
 node_modules/
 
+# Node test server stuff
+package.json
+server.js
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
