@@ -1,4 +1,5 @@
 <!-- HERO -->
+<!-- HEADER -->
 <div class="section hero">
 	<div class="container">
 		<div class="row">
@@ -33,7 +34,7 @@
 					</thead>
 					<tbody ng-repeat="repo in main.repositories">
 						<tr>
-							<td><a href={{ repo.url }}>{{ repo.name }}</a></td>
+							<td><a href='{{ repo.url }}'>{{ repo.name }}</a></td>
 							<td>{{ repo.status }}</td>
 						</tr>
 					</tbody>
