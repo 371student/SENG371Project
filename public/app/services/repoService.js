@@ -25,11 +25,6 @@ angular.module('repoService', [])
 			return $http.put('/api/repos/', repoUrl);
 		};
 
-		// delete a repo's data
-		repoFactory.submit = function(repoUrl) {
-			return $http.delete('/api/repos/' + repoUrl);
-		};
-
 		// return our entire repoFactor object
 		return repoFactory;
 
