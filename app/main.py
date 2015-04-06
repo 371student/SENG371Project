@@ -35,9 +35,17 @@ def javascript_app(filename):
 def pages(filename):
     return bottle.static_file(filename, root='public/app/views/pages')
 
+@app.get('/app/views/pages/<filename:re:.*\.json>')
+def pages(filename):
+    return bottle.static_file(filename, root='public/app/views/pages')
+
 @app.get('/app/controllers/<filename:re:.*\.js>')
 def controllers(filename):
     return bottle.static_file(filename, root='public/app/controllers')
+
+@app.get('/app/controllers/<filename:re:.*\.js>')
+def controllers(filename):
+    return bottle.static_file(filename, root='public/assets/js')
 
 @app.get('/app/services/<filename:re:.*\.js>')
 def services(filename):
