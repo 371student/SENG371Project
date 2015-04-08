@@ -10,6 +10,12 @@ Usage instructions:
 """
 import sys
 from subprocess import call
+import pymongo
+import requests
+import numpy
+import os
+import bson
+import time
 
 def month_to_num(month):
 	return {
@@ -38,7 +44,9 @@ def parse_log():
 	"""
 	history = {}
 	temp_commit = ''
-	for line in sys.stdin:
+	logs = open('gda_git_logs_temp.txt', 'r')
+
+	for line in logs:
 		words = line.split(' ')
 		if words[0] == 'commit':
 			temp_commit = words[1].rstrip()
@@ -63,7 +71,7 @@ def travel_to(commit):
 	Run git checkout <commit> to reset the project to the state it was in after
 	the given commit
 	"""
-	call(["git", "checkout" , commit])
+	call('git checkout %s' % commit, shell=True)
 
 
 def calculate_coupling_factor():
@@ -101,25 +109,73 @@ def analyze(commits):
 	return average
 
 def main():
-	history = parse_log()
-	results = []
-	for yymm in history:
-		coupling_factor = analyze(history[yymm])
-		results.append(yymm + "," + str(coupling_factor))
-	#f = open('output.csv', 'w')
-	print '\n' + "Dependency Graph" + '\n'
-	print "Date ,  Coupling Factor"
-	for result in sorted(results):
-		print result
-	print '\n' + "Growth Graph" + '\n'
-	print "Date ,  Commits"
-	commit_logs = []
-	for yymm in history:
-		 commit_logs.append(yymm + ',' + str(len(history[yymm])))
-	for i in sorted(commit_logs):
-		print i
-	travel_to('master')
 
+	db_user = os.environ.get('DB_USER')
+	db_pass = os.environ.get('DB_PASS')
+	while True:
+		client = pymongo.MongoClient('mongodb://%s:%s@ds031278.mongolab.com:31278/seng371'%(db_user, db_pass))
+		db = client['seng371']
+		repos = db['repos']
+		result = repos.find_one({"status": "queued"})
+		if result == None:
+			time.sleep(1800)
+			continue
+		else:
+			url = result['url']
+			mongo_id = result['_id']
+
+			#set status to working
+			result = repos.update_one({'_id': mongo_id}, {'$set': {'status': 'working'}})
+
+			#Get name of repo, clone, and cd into the directory
+			call('git clone %s %s'%(url, str(mongo_id)), shell=True)
+			os.chdir(str(os.getcwd()) + '/' + str(mongo_id))
+
+			#extract the git history
+			call('git log --date-order > gda_git_logs_temp.txt', shell=True)
+			history = parse_log()
+
+			results = []
+
+			#use these 3 arrays in numpy calculations
+			dates = []
+			grow_fact = []
+			coup_fact = []
+			#Use this to index the numpy arrays
+			i = 0
+
+			for yymm in sorted(history):
+				result = {'yymm': yymm}
+				coupling_factor = analyze(history[yymm])
+				result['coupling_factor'] = coupling_factor
+				growth_factor = len(history[yymm])
+				result['growth_factor'] = growth_factor
+				results.append(result)
+
+				dates.append(numpy.datetime64(yymm))
+				grow_fact.append(growth_factor)
+				coup_fact.append(coupling_factor)
+				i += 1
+
+			travel_to('master')
+			os.chdir(str(os.getcwd()) + '/'  + '..')
+
+			end = i
+
+			# z1 = numpy.polyfit(dates, grow_fact, 20)
+			# p1 = numpy.poly1d(z1)
+			# grow_fact_trend = p1(dates)
+			# z2 = numpy.polyfit(dates, coup_fact, 20)
+			# p2 = numpy.poly1d(z2)
+			# coup_fact_trend = p2(dates)
+
+			# i = 0
+			# while i <= end:
+			# 	results[i]['coupling_trend'] = coup_fact_trend[i]
+			# 	results[i]['growth_trend'] = grow_fact_trend[i]
+				# i += 1
+
+			result = repos.update_one({'_id': mongo_id}, {'$set': {'data': results, 'status': 'complete'}})
 
 if __name__ == '__main__':
 	main()
