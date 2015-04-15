@@ -1,1 +1,1 @@
-angular.module('GDAapp', ['app.routes','repoService','mainCtrl']);
+angular.module('GDAapp', ['app.routes','repoService','mainCtrl','dataCtrl']);

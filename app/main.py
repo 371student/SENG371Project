@@ -3,6 +3,7 @@ import json
 from bottle.ext.mongo import MongoPlugin
 import os
 from bson.json_util import dumps
+from bottle import request
 
 
 app = bottle.Bottle()
@@ -14,6 +15,14 @@ app.install(plugin)
 @app.get('/')
 def index():
     return bottle.static_file("index.html",root="public/app/views")
+
+@app.get('/app/views/pages/<filename:re:.*\.html>')
+def pages(filename):
+    return bottle.static_file(filename, root='public/app/views/pages')
+
+@app.get('/app/views/pages/<filename:re:.*\.json>')
+def json(filename):
+    return bottle.static_file(filename, root='public/app/views/pages')
 
 @app.get('/assets/css/<filename:re:.*\.css>')
 def stylesheets(filename):
@@ -31,21 +40,9 @@ def javascript_libs(filename):
 def javascript_app(filename):
     return bottle.static_file(filename, root='public/app')
 
-@app.get('/app/views/pages/<filename:re:.*\.html>')
-def pages(filename):
-    return bottle.static_file(filename, root='public/app/views/pages')
-
-@app.get('/app/views/pages/<filename:re:.*\.json>')
-def pages(filename):
-    return bottle.static_file(filename, root='public/app/views/pages')
-
 @app.get('/app/controllers/<filename:re:.*\.js>')
 def controllers(filename):
     return bottle.static_file(filename, root='public/app/controllers')
-
-@app.get('/app/controllers/<filename:re:.*\.js>')
-def controllers(filename):
-    return bottle.static_file(filename, root='public/assets/js')
 
 @app.get('/app/services/<filename:re:.*\.js>')
 def services(filename):
@@ -72,6 +69,8 @@ Get this url to get all repositories in the db
 @app.get('/api/repos')
 def get_repos(mongodb):
   return dumps(mongodb['repos'].find())
+
+
 
 # Expose WSGI app
 application = app

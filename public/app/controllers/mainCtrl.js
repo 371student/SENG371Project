@@ -23,7 +23,11 @@ angular.module('mainCtrl', ['repoService'])
 	];
 
 	vm.submitRepoUrl = function() {
-		$location.path('/data');
-	};
+		
+		// data = text in clone id text box
+		var data = document.getElementById("githubUrlInput").value;
+			$location.path('/data');
+		};
+
 
 });
