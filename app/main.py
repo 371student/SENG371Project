@@ -3,7 +3,6 @@ import json
 from bottle.ext.mongo import MongoPlugin
 import os
 from bson.json_util import dumps
-from bottle import request
 
 
 app = bottle.Bottle()
@@ -69,8 +68,6 @@ Get this url to get all repositories in the db
 @app.get('/api/repos')
 def get_repos(mongodb):
   return dumps(mongodb['repos'].find())
-
-
 
 # Expose WSGI app
 application = app
