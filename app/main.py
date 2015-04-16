@@ -17,6 +17,14 @@ app.install(plugin)
 def index():
     return bottle.static_file("index.html",root="public/app/views")
 
+@app.get('/app/views/pages/<filename:re:.*\.html>')
+def pages(filename):
+    return bottle.static_file(filename, root='public/app/views/pages')
+
+@app.get('/app/views/pages/<filename:re:.*\.json>')
+def json(filename):
+    return bottle.static_file(filename, root='public/app/views/pages')
+
 @app.get('/assets/css/<filename:re:.*\.css>')
 def stylesheets(filename):
     return bottle.static_file(filename, root='public/assets/css')
@@ -32,10 +40,6 @@ def javascript_libs(filename):
 @app.get('/app/<filename:re:.*\.js>')
 def javascript_app(filename):
     return bottle.static_file(filename, root='public/app')
-
-@app.get('/app/views/pages/<filename:re:.*\.html>')
-def pages(filename):
-    return bottle.static_file(filename, root='public/app/views/pages')
 
 @app.get('/app/controllers/<filename:re:.*\.js>')
 def controllers(filename):

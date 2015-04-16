@@ -16,7 +16,7 @@ angular.module('app.routes', ['ngRoute'])
 	// route for the data page
 	.when('/data', {
 		templateUrl	: 'app/views/pages/data.html',
-		controller	: 'mainController',
+		controller	: 'dataController',
 		controllerAs: 'data' 
 	})
 

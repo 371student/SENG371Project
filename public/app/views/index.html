@@ -31,6 +31,7 @@
 
 	<!-- CONTROLLERS -->
 	<script src="app/controllers/mainCtrl.js"></script>
+	<script src="app/controllers/dataCtrl.js"></script>
 
 	<!-- SERVICES -->
 	<script src="app/services/repoService.js"></script>
@@ -38,6 +39,12 @@
 	<!-- MAIN ANGULAR APP -->
 	<script src="app/app.routes.js"></script>
 	<script src="app/app.js"></script>
+
+	<!-- D3.JS GRAPHING LIBRARY -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+	<!-- REGULAR OLD JAVASCRIPT -->
+	<!-- STUFF -->
 
 </head>
 <body ng-app="GDAapp" ng-controller="mainController as main" data-0="background-position:0px 0px;" data-150000="background-position:0px -50000px;">
@@ -47,7 +54,7 @@
 
 		<main>
 
-			<!-- NG-VIEW INJECTION -->
+			<!-- NG-VIEW INJECTION: HTML "PAGES" GET PUT HERE -->
 			<div ng-view></div>
 
 		</main>
@@ -57,10 +64,10 @@
 	<script type="text/javascript" src="assets/libs/skrollr.min.js"></script>
 	<script type="text/javascript">
 		var s = skrollr.init({          
-		mobileCheck: function() {
-		    return false;
-		}
-	    });
+			mobileCheck: function() {
+			    return false;
+			}
+	   	});
 	</script>
 
 </body>
