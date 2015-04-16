@@ -25,6 +25,4 @@ angular.module('mainCtrl', ['repoService'])
 	vm.submitRepoUrl = function() {
 		$location.path('/data');
 	};
-
-
 });
