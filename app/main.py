@@ -3,6 +3,8 @@ import json
 from bottle.ext.mongo import MongoPlugin
 import os
 from bson.json_util import dumps
+import requests
+import re
 
 
 app = bottle.Bottle()
@@ -56,7 +58,9 @@ def add_repo(mongodb):
   if mongodb['repos'].find({'url': data['url']}).count() != 0:
     return
   else:
-    mongodb['repos'].insert({'url': data['url'], 'status': 'queued', 'data': []})
+    temp = re.match('https://github.com/[a-zA-Z0-9-]*/[a-zA-Z0-9-]*\.git', data['url'])
+    if temp != None:
+      mongodb['repos'].insert({'url': data['url'], 'status': 'queued', 'data': []})
 
 """
 Get this url to get all repositories in the db
@@ -64,6 +68,11 @@ Get this url to get all repositories in the db
 @app.get('/api/repos')
 def get_repos(mongodb):
   return dumps(mongodb['repos'].find())
+
+@app.post('/api/repo')
+def get_one_repo(mongodb):
+  data = bottle.request.json
+  return dumps(mongodb['repos'].find_one({'url': data['url']}))
 
 # Expose WSGI app
 application = app

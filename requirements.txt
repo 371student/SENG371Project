@@ -4,6 +4,7 @@ bottle-mongo==0.2.4
 gevent==1.0.1
 greenlet==0.4.5
 gunicorn==19.2.1
-pymongo==2.8
+numpy==1.9.2
+pymongo==3.0
 requests==2.6.0
 wsgiref==0.1.2
