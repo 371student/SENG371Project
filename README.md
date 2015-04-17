@@ -1,12 +1,8 @@
 # SENG371Project
 #### Current Usage Instructions
-1. git clone \<this repo\>
-2. sudo apt-get install snakefood
-3. git clone \<repo to analyze\>
-4. Navigate to the root directory of the git project you wish to analyze
-5. git log --date-order > temp.txt
-6. cat temp.txt | python /path/to/gda.py > output.csv
-7. python /path/to/gitstats.py . /output/directory
+1. Navigate to http://www.growthcoupling.com/
+2. Enter a repo url
+3. See results
 
 #### Project Question
 * How is the growth of a software project affected by coupling? 
@@ -49,18 +45,18 @@ Dependency Graph
 
 Date |  		Commits | Lines Added | Lines Removed
 ---- | ---- | ---- | ---- 
-2015-02 |		92 |	    4172 |	            489
-2015-01 |		43 |	    0 |	             0
-2014-12 |	  52 |	    11008 |            424
-2014-11 |		97 |	     354 |	             133
-2014-10 |		16 |	     60 |                  28
-2014-09 |		12 |	     14 |	              10
-2014-08 |		20 |	      0 |	               0
-2014-07 |		51 |	      713 |	               231
-2014-06 |		10 |	      38 |	               3
-2014-05 |		39 |	      389 |	               742
-2014-04 |		93 |	      837 |	              1075
-2014-03 |		30 |	      0 |	               0
+2015-02 |		92 |	    4172  |	   489
+2015-01 |		43 |	    0 	  |	   0
+2014-12 |		52 |	    11008 |        424
+2014-11 |		97 |	    354   |	   133
+2014-10 |		16 |	    60    |        28
+2014-09 |		12 |	    14    |	   10
+2014-08 |		20 |	    0     |	   0
+2014-07 |		51 |	    713   |	   231
+2014-06 |		10 |	    38    |	   3
+2014-05 |		39 |	    389   |	   742
+2014-04 |		93 |	    837   |	   1075
+2014-03 |		30 |	    0     |	   0
         		 …
 
 *Resulting graph from comparing Coupling Factor to Growth Factor*
@@ -70,7 +66,7 @@ Date |  		Commits | Lines Added | Lines Removed
 
 As is evidenced, there is a strong correlation between the growth and coupling/dependencies in Django. Further work is needed to more completely understand the relationship between coupling and growth. It is still unclear if there is a one or two-way causal relationship between the two factors. The analysis of multiple repositories would reduce threats to the validity of our claims.
 
-#### Project Milestones
+#### Project Milestones For Project 1
 
 1. Feasibility Analysis (Feb. 3) - Experiment with Snakefood and GitStats to verify that the data we need (in terms of coupling/dependencies and growth) is available. Record the run-time for these events and extrapolate over an entire cycle of our potential tool.
 2. Tool Creation (Feb. 22)
@@ -80,55 +76,62 @@ As is evidenced, there is a strong correlation between the growth and coupling/d
   1. Use the machine-readable information obtained to plot coupling/dependency data against growth data.
   2. Analyze the data acquired and find other meaningful relationships between coupling and growth, and use this feedback to drive future development.
 
-#### Future Work
+#### Future Work From Project 1
 
 1. Automate/simplify program flow - Our next step is to remove intermediate steps for users by streamlining the entire application process. Ideally a user could simply run our tool with tFurther analysis of data | X | X | Xhe location of a cloned Git repository as a parameter (possibly with a time-increment parameter as well), and our tool would output the information.
 2. Graph output - As an extension to automation, we would like our tool to produce graphical representations of the outputted data, to make it immediately meaningful for users.
-3. Parallelize computation / improve performance at scale - Currently, our tool will run for hours on sufficiently large repositories. By refactoring our code to take advantage of threading or distributed computing, we could achieve much faster computation. 
+3. Parallelize computation / improve user performance at scale - Currently, our tool will run for hours on sufficiently large repositories. By refactoring our code to take advantage of threading or distributed computing, we could achieve much faster computation. 
 
-#### Team Member’s Roles
+#### Team Member’s Roles In Project 1
 
 * Chris - Data Scientist
 * Richard - Developer
 * Sarah - Developer
-* 
 
-# Estimation and Timeline
+<hr>
+
+# Estimation and Timeline For Project 2
 
 #### Task Breakdown and Estimations 
 Task | Importance | Effort | Risk
 ---- | ---- | ---- | ----
-Streamline the process | 8 | 7 | 2
-There should be 1 file created at runtime (the output.csv)| 6 | 7 | 3
-Run gitstats in quiet mode | 9 | 8 | 1
-Prompt user for git info, repo link etc .. instead of following the readme | 5 | 5 | 1
-Inform user of current script status during runtime | 3 | 4 | 1
-Incorporate matplotlib into script | 10 | 5 | 4
-Increase performance | 7 | 10 | 9
-Look into non-python repositories | 6 | 9 | 0
-Further analysis of data | 10 | 8 | 3
-Create webapp | 2 | 9 | 8
+Research: Using non-python repositories | 2 | 2 | 0
+Research: Server, client, database technologies | 5 | 4 | 0
+Research: Gitstats alternatives | 3 | 3 | 0
+Research: Further analysis of data | 8 | 10 | 1
+Development: Incorporate [d3](http://d3js.org/) into the application | 8 | 6 | 4
+Development: Create an interface on the client side | 10 | 7 | 4
+Development: Create basic server code | 10 | 5 | 4
+Development: Create server and client code that exchange data | 8 | 7 | 4
+Development: Create a worker script  | 8 | 7 | 4
+Development: Estabolish sending data between client, server and databse | 10 | 8 | 5
+Development: Inform user of current script status during runtime | 3 | 4 | 1
+Development: Allow users to select a repo from a list of ones previously run | 8 | 6 | 3
 
 
+#### Sprint 1	(March 10th - March 24th)
+Plan | Accomplished 
+ ---- | ----
+Research: Using non-python repositories 	| Decided it was best to continue using Snakefood and python-based repositories
+Research: Server, client, database technologies | We decided on the following: <br> server: python <br> client: HTML, CSS, JS, and Angular.js framework <br> database: MongoDB
+Research: Gitstats alternatives  		| We decided to no longer use gitstats in our application
+Research: Further analysis of data		| Find mathematical cooralation between growth factor and coupling factor
 
+#### Sprint 2	(March 24th - April 7th)
+Plan | Accomplished 
+ ---- | ----
+Development: Incorporate d3 into the application		| d3 was successfully incorporated into the client code
+Development: Create an interface on the client side		| User interface was successfully developed using HTML, CSS, JS, and Angular.js
+Development: Create basic server code				| This was successfully completed. At this point we had a functional website with minimal features.
+Development: Create server and client code that exchange data	| This was successfully completed using ajax and json objects
 
-#### Sprint 1 Plan  (March 10th - March 24th)
-* Look into non-python repositories
-* Incorporate matplotlib into script 
-* There should be 1 file created at runtime
-* Look into gitstats alternatives 
-
-#### Sprint 2 Plan (March 24th - April 7th)
-* Further analysis of data (new relationships, finding correlations/causations)
-* Streamline the process
-* Prompt user for git info, repo link etc .. instead of following the readme 
-
-#### Sprint 3 Plan  (April 7th - April 21st)
-* Increase performance
-* Inform user of current script status during runtime 
-* Run gitstats in quiet mode
-* Create webapp
-
+#### Sprint 3	(April 7th - April 30th)
+Plan | Accomplished 
+ ---- | ----
+Development: Create a worker script					     | In progress
+Development: Estabolish sending data between client, server and databse      | In progress
+Development: Inform user of current script status during runtime	     | In progress
+Development: Allow users to select a repo from a list of ones previously run | In progress
 
 
 ####  Scrum Meeting Times
@@ -139,20 +142,25 @@ Create webapp | 2 | 9 | 8
 
 Task | Chris | Richard  | Sarah
 ---- | ---- | ---- | ---- 
-Sprint 1 |  |  | 
-Non-python repositories | X | X | X
-Incorporate matplotlib | X | | 
-1 file created | | X | X
-gitstats alternatives | X | X | X
-Sprint 2 |  |  | 
-Streamline the process | X | X | X
-Prompt user for info | | | X
-Further analysis of data | X | X | X
-Sprint 3 |  |  | 
-Increase performance | X |  X |
-Inform user script status | | | X
-Run gitstats in quiet mode | | X |
-Create webapp | X | X | X 
+Sprint 1 | | |
+Research: Using non-python repositories | X | X | X
+Research: Server, client, database technologies | X | X | 
+Research: Gitstats alternatives | X | X | X
+Research: Further analysis of data | X |  | 
+Sprint 2 | | |
+Development: Incorporate [d3](http://d3js.org/) into the application |  |  | X
+Development: Create an interface on the client side | X |  | X
+Development: Create basic server code |  | X  | 
+Development: Create server and client code that exchange data | X | X | X
+Sprint 3 | | |
+Development: Create a worker script  |  | X | 
+Development: Estabolish sending data between client, server and databse |  | X | 
+Development: Inform user of current script status during runtime | X | X | X
+Development: Allow users to select a repo from a list of ones previously run | X |  | X
 
-
+### Improvements From Project 1
+1. No downloadable content - Project 1 required the user to clone our repository and install all the dependencies. For project 2, we use a server to run our script where the user simply supplies the reporsitory  url. 
+2. Graph output - In project 1, the user gathered the .csv files and choose a program of their choice to view th data and manually graph it. In order to increate automation, our tool now uses d3 to produce graphical representations of the outputted data, to make it immediately meaningful for users.
+3. Increased user preformance - In poject 1, our tool would run for hours on sufficiently large repositories. By storing repositories in our database, we can simply pull the data from the database rather than running the script again. 
+4. Created a user interface - Project 1 required the user to run linux commands in the terminal and follow a tedious process in order to get the desired output. By creating a web application we created a clean UI for our users. 
 
