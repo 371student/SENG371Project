@@ -4,7 +4,8 @@ angular.module('mainCtrl', ['repoService'])
 		// bind "this" to vm (view-model)
 		var vm = this;
 
-		// Get all the repositories
+		/* MAIN
+		---------------------------------------*/
 		Repo.all()
 			// Make promise
 			.success(function(data) {
@@ -19,7 +20,21 @@ angular.module('mainCtrl', ['repoService'])
 					vm.processing = false;
 
 					vm.repoUrl = null;
-					// $location.path('/data');
+					$location.path('/repoadded');
 				});
 		};
+
+		/* REPOADDED
+		---------------------------------------*/
+		vm.successMessage = "You have added a repository to the queue. Check back in a little while to view the results! (You may need to refresh the page)";
+
+		vm.backHome = function() {
+			$location.path('/home');
+			Repo.all()
+				// Make promise
+				.success(function(data) {
+					vm.repositories = data;
+				});
+		}
+		
 	});
