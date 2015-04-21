@@ -1,28 +1,52 @@
 angular.module('mainCtrl', ['repoService'])
 
-// create the controllers
-// this will be the controller for the ENTIRE site
-.controller('mainController', function($location, Repo) {
-	// bind "this" to vm (view-model)
-	var vm = this;
+	.controller('mainController', function($location, Repo) {
+		// bind "this" to vm (view-model)
+		var vm = this;
 
-	// define a list of GitHub repositories
-	// we will eventually just pull this list from the DB
-	vm.repositories = [
-		{ name: 'Django', url: 'https://github.com/django/django', status: 'Complete' },
-		{ name: 'Pyramid', url: 'https://github.com/Pylons/pyramid', status: 'Complete' },
-		{ name: 'Flask', url: 'https://github.com/mitsuhiko/flask', status: 'Complete' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' },
-		{ name: 'Test', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', status: 'In Progress' }
-	];
+		/* HOME
+		---------------------------------------*/
+		Repo.all()
+			.success(function(data) {
+				vm.repositories = data;
+			});
 
-	vm.submitRepoUrl = function() {
-		$location.path('/data');
-	};
-});
+		vm.submitRepoUrl = function() {
+			vm.processing = true;
+			
+			Repo.add(vm.repoUrl)
+				.success(function(data) {
+					vm.processing = false;
+
+					vm.repoUrl = null;
+					$location.path('/repoadded');
+				});
+		};
+
+		/* MAIN
+		---------------------------------------*/
+		vm.goToData = function(repoUrlForData) {
+			vm.processing = true;
+
+			Repo.getOne(repoUrlForData)
+				.success(function(data) {
+					vm.repoData = data;
+					vm.processing = false;
+
+					$location.path('/data');
+				});
+		};
+
+		/* REPOADDED
+		---------------------------------------*/
+		vm.successMessage = "You have added a repository to the queue. Check back in a little while to view the results! (You may need to refresh the page)";
+
+		vm.backHome = function() {
+			$location.path('/home');
+			Repo.all()
+				.success(function(data) {
+					vm.repositories = data;
+				});
+		}
+
+	});

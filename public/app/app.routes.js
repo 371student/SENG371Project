@@ -13,6 +13,13 @@ angular.module('app.routes', ['ngRoute'])
 		controllerAs: 'home' 
 	})
 
+	// route for the success page
+	.when('/repoadded', {
+		templateUrl	: 'app/views/pages/repoadded.html',
+		controller	: 'mainController',
+		controllerAs: 'repoadded' 
+	})
+
 	// route for the data page
 	.when('/data', {
 		templateUrl	: 'app/views/pages/data.html',

@@ -10,9 +10,13 @@ angular.module('repoService', [])
 			return $http.get('/api/repos');
 		};
 
+		repoFactory.getOne = function(repoUrlForData) {
+			return $http.post('/api/repo', {'url': repoUrlForData});
+		}
+
 		// add a new repo's data
 		repoFactory.add = function(repoUrl) {
-			return $http.post('/api/add', repoUrl);
+			return $http.post('/api/add', {'url': repoUrl});
 		};
 
 		// return our entire repoFactor object
