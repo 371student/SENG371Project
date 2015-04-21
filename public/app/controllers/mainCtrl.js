@@ -15,12 +15,12 @@ angular.module('mainCtrl', ['repoService'])
 
 	vm.submitRepoUrl = function() {
 		vm.processing = true;
-
-		Repo.add(vm.newrepo.repoUrl)
-			// Make promise
+		
+		Repo.add(vm.repoUrl)
 			.success(function(data) {
 				vm.processing = false;
 
+				vm.repoUrl = null;
 				// $location.path('/data');
 			});
 	};
