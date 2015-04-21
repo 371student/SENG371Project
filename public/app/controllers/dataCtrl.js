@@ -91,4 +91,12 @@ angular.module('dataCtrl', ['repoService'])
 	      .text(function(d) { return d.name; });
 
 	});
+
+	vm.backHome = function() {
+		$location.path('/home');
+		Repo.all()
+			.success(function(data) {
+				vm.repositories = data;
+			});
+	}	
 });

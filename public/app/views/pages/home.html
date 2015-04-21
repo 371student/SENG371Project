@@ -40,7 +40,8 @@
 					</thead>
 					<tbody ng-repeat="repo in main.repositories">
 						<tr>
-							<td><a href='{{ repo.url }}'>{{ repo.name }}</a></td>
+							<td><a ng-click='main.goToData(repo.url)'>{{ repo.name }}</a></td>
+							<!-- <td><a href='{{ repo.url }}'>{{ repo.name }}</a></td> -->
 							<td>{{ repo.status }}</td>
 						</tr>
 					</tbody>
