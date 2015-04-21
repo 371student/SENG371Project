@@ -7,12 +7,12 @@ angular.module('repoService', [])
 
 		// get every repo's data
 		repoFactory.all = function() {
-			return $http.get('/api/repos');
+			return $http.get('/api/repos/');
 		};
 
 		// add a new repo's data
 		repoFactory.add = function(repoUrl) {
-			return $http.post('/api/add', repoUrl);
+			return $http.post('/api/add/', repoUrl);
 		};
 
 		// return our entire repoFactor object
