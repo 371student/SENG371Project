@@ -9,8 +9,14 @@
 				<!-- GITHUB URL SUBMISSION FORM -->
 				<form ng-submit="home.submitRepoUrl()">
 					<label for="githubUrlInput">GitHub URL</label>
-					<input class="u-full-width" type="url" placeholder="https://github.com/371student/seng371project.git" id="githubUrlInput">
-					<input class="button button-primary" type="submit" value="Start">
+					<input class="u-full-width form-control" ng-model="home.newrepo.repoUrl" type="url" placeholder="https://github.com/371student/seng371project.git" id="githubUrlInput">
+					<button type="submit" class="button button-primary">
+						<span ng-if="!home.processing">Start</span>
+						<span ng-if="home.processing" class="spinner">
+							<!-- <span class="repeatIcon"></span> -->
+							Processing...
+						</span>
+					</button>
 				</form>
 				<!-- END FORM -->
 			</div>
@@ -34,7 +40,7 @@
 					</thead>
 					<tbody ng-repeat="repo in main.repositories">
 						<tr>
-							<td><a href='https://github.com/bravecollective/core'>{{ repo.name }}</a></td>
+							<td><a href='{{ repo.url }}'>{{ repo.name }}</a></td>
 							<td>{{ repo.status }}</td>
 						</tr>
 					</tbody>
