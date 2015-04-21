@@ -59,13 +59,16 @@ Post to this url to add a git repository to the queue
 @app.post('/api/add')
 def add_repo(mongodb):
   data = bottle.request.json
-  #Make sure the repo is not already in the db
-  if mongodb['repos'].find({'url': data['url']}).count() != 0:
+
+  #Make sure the url is a properly formatted github url
+  temp = re.match('https://github.com/([a-zA-Z0-9-]*)/([a-zA-Z0-9-]*)\.git', data['url'])
+  if temp == None:
     return
   else:
-    #Make sure the url is a properly formatted github url
-    temp = re.match('https://github.com/([a-zA-Z0-9-]*)/([a-zA-Z0-9-]*)\.git', data['url'])
-    if temp != None:
+    #Make sure the repo is not already in the db
+    if mongodb['repos'].find({'url': data['url']}).count() != 0:
+      return
+    else:
       #Make sure the url points to a real repository
       result = requests.get('https://github.com/%s/%s'%(temp.group(1), temp.group(2)))
       if result.status_code == 200:
