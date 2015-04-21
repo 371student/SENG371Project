@@ -16,6 +16,8 @@ import numpy
 import os
 import bson
 import time
+import matplotlib.dates as mdates
+import datetime
 
 def month_to_num(month):
 	return {
@@ -152,7 +154,8 @@ def main():
 				result['growth_factor'] = growth_factor
 				results.append(result)
 
-				dates.append(numpy.datetime64(yymm))
+				split_date = yymm.split('-')
+				dates.append(datetime.datetime(int(split_date[0]), int(split_date[1]), 1))
 				grow_fact.append(growth_factor)
 				coup_fact.append(coupling_factor)
 				i += 1
@@ -162,18 +165,18 @@ def main():
 
 			end = i
 
-			# z1 = numpy.polyfit(dates, grow_fact, 20)
-			# p1 = numpy.poly1d(z1)
-			# grow_fact_trend = p1(dates)
-			# z2 = numpy.polyfit(dates, coup_fact, 20)
-			# p2 = numpy.poly1d(z2)
-			# coup_fact_trend = p2(dates)
+			z1 = numpy.polyfit(mdates.date2num(dates), numpy.array(grow_fact), 20)
+			p1 = numpy.poly1d(z1)
 
-			# i = 0
-			# while i <= end:
-			# 	results[i]['coupling_trend'] = coup_fact_trend[i]
-			# 	results[i]['growth_trend'] = grow_fact_trend[i]
-				# i += 1
+			z2 = numpy.polyfit(mdates.date2num(dates), numpy.array(coup_fact), 20)
+			p2 = numpy.poly1d(z2)
+
+			i = 0
+			while i < end:
+				temporary = p1(mdates.date2num(dates)[i])
+				results[i]['growth_trend'] = temporary
+				results[i]['coupling_trend'] = p2(mdates.date2num(dates)[i])
+				i += 1
 
 			result = repos.update_one({'_id': mongo_id}, {'$set': {'data': results, 'status': 'complete'}})
 
