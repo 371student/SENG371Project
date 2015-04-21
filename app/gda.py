@@ -120,7 +120,7 @@ def main():
 		repos = db['repos']
 		result = repos.find_one({"status": "queued"})
 		if result == None:
-			time.sleep(1800)
+			time.sleep(60)
 			continue
 		else:
 			url = result['url']
@@ -173,8 +173,7 @@ def main():
 
 			i = 0
 			while i < end:
-				temporary = p1(mdates.date2num(dates)[i])
-				results[i]['growth_trend'] = temporary
+				results[i]['growth_trend'] = p1(mdates.date2num(dates)[i])
 				results[i]['coupling_trend'] = p2(mdates.date2num(dates)[i])
 				i += 1
 
