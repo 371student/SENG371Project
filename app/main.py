@@ -69,7 +69,7 @@ def add_repo(mongodb):
       #Make sure the url points to a real repository
       result = requests.get('https://github.com/%s/%s'%(temp.group(1), temp.group(2)))
       if result.status_code == 200:
-        mongodb['repos'].insert({'url': data['url'], 'status': 'queued', 'data': []})
+        mongodb['repos'].insert({'url': data['url'], 'name': '%s/%s' % (temp.group(1), temp.group(2)), 'status': 'queued', 'data': []})
 
 """
 Get this url to get all repositories in the db
