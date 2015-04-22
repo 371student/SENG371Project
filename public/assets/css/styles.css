@@ -8,6 +8,16 @@ td {
   font-weight: bold;
 }
 
+a.menu_links { 
+  cursor: pointer; 
+}
+
+.repeatWheel {
+  height: 100%
+  max-height: 21px;
+  width: auto;
+}
+
 /* Sections
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .section {

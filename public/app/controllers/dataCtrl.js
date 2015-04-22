@@ -8,9 +8,9 @@ angular.module('dataCtrl', ['repoService'])
 
 		/* GRAPH
 			---------------------------------------*/
-		var margin = {top: 200, right: 80, bottom: 30, left: 50},
+		var margin = {top: 30, right: 120, bottom: 30, left: 20},
 	    width = 960 - margin.left - margin.right,
-	    height = 960- margin.top - margin.bottom;
+	    height = 640 - margin.top - margin.bottom;
 
 		var parseDate = d3.time.format("%Y-%m").parse;
 
