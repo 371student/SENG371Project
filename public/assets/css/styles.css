@@ -155,6 +155,10 @@ body {
 /* graph css
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
+.graphDiv {
+  background-color: white;
+}
+
 .axis path,
 .axis line {
   fill: none;

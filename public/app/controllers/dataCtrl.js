@@ -4,6 +4,8 @@ angular.module('dataCtrl', ['repoService'])
 		// bind "this" to vm (view-model)
 		var vm = this;
 
+		vm.currentRepo = Repo.graphData.name;
+
 		/* GRAPH
 			---------------------------------------*/
 		var margin = {top: 200, right: 80, bottom: 30, left: 50},
@@ -39,22 +41,20 @@ angular.module('dataCtrl', ['repoService'])
 		  .append("g")
 		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-		// Grab JSON repo data
-		d3.json("app/views/pages/data.json", function(error, data) {
+		    // Grab graphable values from repo data
+		  var data = Repo.graphData.data;
 
-			// console.log(Repo.graphData.data);
-		// d3.json(Repo.graphData.data, function(error, data) {
 		  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "yymm"; }));
 
-		  // data.forEach(function(d) {
-		  //   d.date = parseDate(d.date);
-		  // });
+		  data.forEach(function(d) {
+		    d.yymm = parseDate(d.yymm);
+		  });
 
 		  var line_name = color.domain().map(function(name) {
 		    return {
 		      name: name,
 		      values: data.map(function(d) {
-		        return {date: d.yymm, growth_factor: +d[name]};
+		        return {yymm: d.yymm, relVal: +d[name]};
 		      })
 		    };
 		  });
@@ -97,13 +97,11 @@ angular.module('dataCtrl', ['repoService'])
 		      .attr("dy", ".35em")
 		      .text(function(d) { return d.name; });
 
-		});
-
 		vm.backHome = function() {
-			$location.path('/home');
 			Repo.all()
 				.success(function(data) {
 					vm.repositories = data;
+					$location.path('/home');
 				});
 		}	
 	});
