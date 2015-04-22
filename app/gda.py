@@ -145,7 +145,9 @@ def main():
 			coup_fact = []
 			#Use this to index the numpy arrays
 			i = 0
-
+			total_commits = 0.0
+			total_months = 0.0
+			total_coupling = 0.0
 			for yymm in sorted(history):
 				result = {'yymm': yymm}
 				coupling_factor = analyze(history[yymm])
@@ -154,11 +156,23 @@ def main():
 				result['growth_factor'] = growth_factor
 				results.append(result)
 
+				total_commits += growth_factor
+				total_months += 1
+				total_coupling += coupling_factor
+
 				split_date = yymm.split('-')
 				dates.append(datetime.datetime(int(split_date[0]), int(split_date[1]), 1))
-				grow_fact.append(growth_factor)
 				coup_fact.append(coupling_factor)
 				i += 1
+
+			average_commits = total_commits/total_months
+			average_coupling = total_coupling/total_months
+			magicnum = average_commits/average_coupling
+			magicnum = magicnum * 4
+
+			for result in results:
+				result['growth_factor'] = result['growth_factor'] / magicnum
+				grow_fact.append(result['growth_factor'])
 
 			travel_to('master')
 			os.chdir(str(os.getcwd()) + '/'  + '..')
