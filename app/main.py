@@ -61,7 +61,7 @@ def add_repo(mongodb):
   data = bottle.request.json
 
   #Make sure the url is a properly formatted github url
-  temp = re.match('https://github.com/([a-zA-Z0-9-]*)/([a-zA-Z0-9-]*)\.git', data['url'])
+  temp = re.match('^https://github.com/([a-zA-Z0-9-]*)/([a-zA-Z0-9-]*)\.git$', data['url'])
   if temp == None:
     return
   else:
