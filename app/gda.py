@@ -162,7 +162,6 @@ def main():
 
 				split_date = yymm.split('-')
 				dates.append(datetime.datetime(int(split_date[0]), int(split_date[1]), 1))
-				grow_fact.append(growth_factor)
 				coup_fact.append(coupling_factor)
 				i += 1
 
@@ -172,6 +171,7 @@ def main():
 
 			for result in results:
 				result['growth_factor'] = result['growth_factor'] / magicnum
+				grow_fact.append(result['growth_factor'])
 
 			travel_to('master')
 			os.chdir(str(os.getcwd()) + '/'  + '..')
