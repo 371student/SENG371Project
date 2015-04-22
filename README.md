@@ -83,7 +83,7 @@ As is evidenced, there is a strong correlation between the growth and coupling/d
 
 #### Future Work From Project 1
 
-1. Automate/simplify program flow - Our next step is to remove intermediate steps for users by streamlining the entire application process. Ideally a user could simply run our tool with tFurther analysis of data | X | X | Xhe location of a cloned Git repository as a parameter (possibly with a time-increment parameter as well), and our tool would output the information.
+1. Automate/simplify program flow - Our next step is to remove intermediate steps for users by streamlining the entire application process. Ideally a user could simply run our tool with the location of a cloned Git repository as a parameter (possibly with a time-increment parameter as well), and our tool would output the information.
 2. Graph output - As an extension to automation, we would like our tool to produce graphical representations of the outputted data, to make it immediately meaningful for users.
 3. Parallelize computation / improve user performance at scale - Currently, our tool will run for hours on sufficiently large repositories. By refactoring our code to take advantage of threading or distributed computing, we could achieve much faster computation. 
 
@@ -127,14 +127,14 @@ Plan | Accomplished
  ---- | ----
 Development: Incorporate d3 into the application		| d3 was successfully incorporated into the client code
 Development: Create an interface on the client side		| User interface was successfully developed using HTML, CSS, JS, and Angular.js
-Development: Create basic server code				| This was successfully completed. At this point we had a functional website with minimal features.
+Development: Create basic server code				| This was successfully completed. At this point we had a functional website with minimal features
 Development: Create server and client code that exchange data	| This was successfully completed using ajax and json objects
 
-#### Sprint 3	(April 7th - April 30th)
+#### Sprint 3	(April 7th - April 21st)
 Plan | Accomplished 
  ---- | ----
 Development: Create a worker script					     | In progress
-Development: Estabolish sending data between client, server and databse      | In progress
+Development: Estabolish sending data between client, server and databse      | This was completed using json objects
 Development: Inform user of current script status during runtime	     | In progress
 Development: Allow users to select a repo from a list of ones previously run | In progress
 
