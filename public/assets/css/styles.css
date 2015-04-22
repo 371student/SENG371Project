@@ -8,7 +8,7 @@ td {
   font-weight: bold;
 }
 
-a .repo_links { 
+a.repo_links:hover { 
   cursor: pointer; 
 }
 
