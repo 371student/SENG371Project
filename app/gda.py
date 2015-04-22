@@ -168,6 +168,7 @@ def main():
 			average_commits = total_commits/total_months
 			average_coupling = total_coupling/total_months
 			magicnum = average_commits/average_coupling
+			magicnum = magicnum * 4
 
 			for result in results:
 				result['growth_factor'] = result['growth_factor'] / magicnum
