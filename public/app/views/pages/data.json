@@ -1,135 +1,135 @@
 [
 	{
-	"date":20110101,
-	"Growth Factor":63.4,
-	"Coupling Factor":62.7,
-	"line3":72.2,
-	"line4":46.3
+	"yymm":20110101,
+	"growth_factor":63.4,
+	"coupling_factor":62.7,
+	"growth_trend":72.2,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110202,
-	"Growth Factor":58.0,
-	"Coupling Factor":59.9,
-	"line3":67.7,
-	"line4":46.3
+	"yymm":20110202,
+	"growth_factor":58.0,
+	"coupling_factor":59.9,
+	"growth_trend":67.7,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110303,
-	"Growth Factor":53.3,
-	"Coupling Factor":59.1,
-	"line3":69.4,
-	"line4":46.3
+	"yymm":20110303,
+	"growth_factor":53.3,
+	"coupling_factor":59.1,
+	"growth_trend":69.4,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110404,
-	"Growth Factor":55.7,
-	"Coupling Factor":56.0,
-	"line3":87.0,
-	"line4":46.3
+	"yymm":20110404,
+	"growth_factor":55.7,
+	"coupling_factor":56.0,
+	"growth_trend":87.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110504,
-	"Growth Factor":65.0,
-	"Coupling Factor":64.0,
-	"line3":54.0,
-	"line4":46.3
+	"yymm":20110504,
+	"growth_factor":65.0,
+	"coupling_factor":64.0,
+	"growth_trend":54.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110604,
-	"Growth Factor":34.0,
-	"Coupling Factor":68.0,
-	"line3":25.0,
-	"line4":46.3
+	"yymm":20110604,
+	"growth_factor":34.0,
+	"coupling_factor":68.0,
+	"growth_trend":25.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110704,
-	"Growth Factor":75.0,
-	"Coupling Factor":77.0,
-	"line3":54.0,
-	"line4":46.3
+	"yymm":20110704,
+	"growth_factor":75.0,
+	"coupling_factor":77.0,
+	"growth_trend":54.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110804,
-	"Growth Factor":56.0,
-	"Coupling Factor":54.0,
-	"line3":53.0,
-	"line4":46.3
+	"yymm":20110804,
+	"growth_factor":56.0,
+	"coupling_factor":54.0,
+	"growth_trend":53.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20110904,
-	"Growth Factor":76.0,
-	"Coupling Factor":64.0,
-	"line3":64.0,
-	"line4":46.3
+	"yymm":20110904,
+	"growth_factor":76.0,
+	"coupling_factor":64.0,
+	"growth_trend":64.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20111004,
-	"Growth Factor":45.0,
-	"Coupling Factor":54.0,
-	"line3":68.0,
-	"line4":46.3
+	"yymm":20111004,
+	"growth_factor":45.0,
+	"coupling_factor":54.0,
+	"growth_trend":68.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20111104,
-	"Growth Factor":46.0,
-	"Coupling Factor":45.0,
-	"line3":65.0,
-	"line4":46.3
+	"yymm":20111104,
+	"growth_factor":46.0,
+	"coupling_factor":45.0,
+	"growth_trend":65.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20111204,
-	"Growth Factor":24.0,
-	"Coupling Factor":32.0,
-	"line3":87.0,
-	"line4":46.3
+	"yymm":20111204,
+	"growth_factor":24.0,
+	"coupling_factor":32.0,
+	"growth_trend":87.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120105,
-	"Growth Factor":67.0,
-	"Coupling Factor":77.0,
-	"line3":72.4,
-	"line4":46.3
+	"yymm":20120105,
+	"growth_factor":67.0,
+	"coupling_factor":77.0,
+	"growth_trend":72.4,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120022,
-	"Growth Factor":58.8,
-	"Coupling Factor":57.0,
-	"line3":77.0,
-	"line4":46.3
+	"yymm":20120022,
+	"growth_factor":58.8,
+	"coupling_factor":57.0,
+	"growth_trend":77.0,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120305,
-	"Growth Factor":57.9,
-	"Coupling Factor":56.7,
-	"line3":82.3,
-	"line4":46.3
+	"yymm":20120305,
+	"growth_factor":57.9,
+	"coupling_factor":56.7,
+	"growth_trend":82.3,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120405,
-	"Growth Factor":61.8,
-	"Coupling Factor":56.8,
-	"line3":78.9,
-	"line4":46.3
+	"yymm":20120405,
+	"growth_factor":61.8,
+	"coupling_factor":56.8,
+	"growth_trend":78.9,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120505,
-	"Growth Factor":69.3,
-	"Coupling Factor":56.7,
-	"line3":68.8,
-	"line4":46.3
+	"yymm":20120505,
+	"growth_factor":69.3,
+	"coupling_factor":56.7,
+	"growth_trend":68.8,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120605,
-	"Growth Factor":71.2,
-	"Coupling Factor":60.1,
-	"line3":68.7,
-	"line4":46.3
+	"yymm":20120605,
+	"growth_factor":71.2,
+	"coupling_factor":60.1,
+	"growth_trend":68.7,
+	"coupling_trend":46.3
 	},
 	{
-	"date":20120705,
-	"Growth Factor":68.7,
-	"Coupling Factor":61.1,
-	"line3":70.3,
-	"line4":46.3
+	"yymm":20120705,
+	"growth_factor":68.7,
+	"coupling_factor":61.1,
+	"growth_trend":70.3,
+	"coupling_trend":46.3
 	}
 ]

@@ -31,7 +31,7 @@ angular.module('dataCtrl', ['repoService'])
 		var line = d3.svg.line()
 		    .interpolate("basis")
 		    .x(function(d) { return x(d.yymm); })
-		    .y(function(d) { return y(d.growth_factor); });
+		    .y(function(d) { return y(d.relVal); });
 
 		var svg = d3.select(".chart").append("svg")
 		    .attr("width", width + margin.left + margin.right)
@@ -40,30 +40,30 @@ angular.module('dataCtrl', ['repoService'])
 		    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 		// Grab JSON repo data
-		// d3.json("app/views/pages/data.json", function(error, data) {
+		d3.json("app/views/pages/data.json", function(error, data) {
 
-			console.log(Repo.graphData.data);
-		d3.json(Repo.graphData.data, function(error, data) {
+			// console.log(Repo.graphData.data);
+		// d3.json(Repo.graphData.data, function(error, data) {
 		  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "yymm"; }));
 
-		  data.forEach(function(d) {
-		    d.date = parseDate(d.date);
-		  });
+		  // data.forEach(function(d) {
+		  //   d.date = parseDate(d.date);
+		  // });
 
 		  var line_name = color.domain().map(function(name) {
 		    return {
 		      name: name,
-		      values: Repo.graphData.data.map(function(d) {
+		      values: data.map(function(d) {
 		        return {date: d.yymm, growth_factor: +d[name]};
 		      })
 		    };
 		  });
 
-		  x.domain(d3.extent(data, function(d) { return d.date; }));
+		  x.domain(d3.extent(data, function(d) { return d.yymm; }));
 
 		  y.domain([
-		    d3.min(line_name, function(c) { return d3.min(c.values, function(v) { return v.temperature; }); }),
-		    d3.max(line_name, function(c) { return d3.max(c.values, function(v) { return v.temperature; }); })
+		    d3.min(line_name, function(c) { return d3.min(c.values, function(v) { return v.relVal; }); }),
+		    d3.max(line_name, function(c) { return d3.max(c.values, function(v) { return v.relVal; }); })
 		  ]);
 
 		  svg.append("g")
@@ -80,19 +80,19 @@ angular.module('dataCtrl', ['repoService'])
 		      .attr("dy", ".71em")
 		      .style("text-anchor", "end")
 
-		  var city = svg.selectAll(".city")
+		  var x_factor = svg.selectAll(".x_factor")
 		      .data(line_name)
-		    .enter().append("g")
-		      .attr("class", "city");
+		      .enter().append("g")
+		      .attr("class", "x_factor");
 
-		  city.append("path")
+		  x_factor.append("path")
 		      .attr("class", "line")
 		      .attr("d", function(d) { return line(d.values); })
 		      .style("stroke", function(d) { return color(d.name); });
 
-		  city.append("text")
+		  x_factor.append("text")
 		      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; })
-		      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.temperature) + ")"; })
+		      .attr("transform", function(d) { return "translate(" + x(d.value.yymm) + "," + y(d.value.relVal) + ")"; })
 		      .attr("x", 3)
 		      .attr("dy", ".35em")
 		      .text(function(d) { return d.name; });
