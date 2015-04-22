@@ -14,7 +14,8 @@
 						<span ng-if="!home.processing">Start</span>
 						<span ng-if="home.processing" class="spinner">
 							<!-- <span class="repeatIcon"></span> -->
-							Processing...
+							<img src="/images/repeat.png" class="repeatWheel">
+							<!-- Processing... -->
 						</span>
 					</button>
 				</form>
@@ -40,7 +41,7 @@
 					</thead>
 					<tbody ng-repeat="repo in main.repositories | orderBy:'name'">
 						<tr>
-							<td><a ng-click='main.goToData(repo.url)'>{{ repo.name }}</a></td>
+							<td><a ng-click='main.goToData(repo.url)'><strong>{{ repo.name }}</strong></a></td>
 							<!-- <td><a href='{{ repo.url }}'>{{ repo.name }}</a></td> -->
 							<td>{{ repo.status }}</td>
 						</tr>
