@@ -1,29 +1,30 @@
 # SENG371Project
 #### Current Usage Instructions
 1. Navigate to http://www.growthcoupling.com/
-2. Enter a repo url
-3. See results
+2. Enter a repository url (remember to include ".git")
+3. Navigate back to the home page.
+4. Refresh the page to view the repository list
 
 OR <br>
- 1. Navigate to http://www.growthcoupling.com/ <br>
- 2. Select an existing repo <br>
- 3. See results <br>
+1. Navigate to http://www.growthcoupling.com/
+2. Select a previously-run repository
+3. View data graphed over time
 
 #### Project Question
-* How is the growth of a software project affected by coupling? 
-* Insights on the development process itself can be made by knowing how adding dependencies (or increasing coupling) affects the growth of the project.
-* Results from our tool could be used to make insights about software projects that use Git as a versioning tool. Our tool could potentially draw attention to things like technical debt / legacy code.
+* How is the growth of a software project related to its coupling? 
+* Insights on the development process itself can be made by knowing how adding dependencies (or increasing coupling) are related to the growth of a project. These insights could potentially help aid in the software development process.
+* Results from our tool could be used to make insights about software projects that use Git as a versioning tool. Our tool could potentially draw attention to things like technical debt / legacy code (ie: accumulation and elimination of code could increase and decrease coupling, respectively). 
 
 #### Methodology
 * Write a script that would iteratively move through the history of the master branch of a software project, and then use [Snakefood](http://furius.ca/snakefood/) to capture the complexity of the dependency graph at that point in time. This complexity metric - or “Coupling Factor” - will be calculated as the ratio of dependency-graph edges to nodes (at that point in time). (Note: as Snakefood only provides coupling information for Python projects, our tool is also restricted to Python projects at this time)
 * Use git to count the number of months. We use 1 commit for each month, the total commits is equal to the growth factor. Edit the source code of [GitStats](https://github.com/hoxu/gitstats) to serve monthly-growth information about the same project. This growth metric - or “Growth Factor” - will be calculated as follows:
   1. Divide the average of Commits/Month by the average of the Coupling Factor.
-  2. Multiply this number by 4.
-  3. Growth factor is equal to to Commits/Month divided by the number obtained in 2.
+  2. Multiply the number obtained in (1) by 4 (only to separate data visually).
+  3. Growth factor is equal to to Commits/Month divided by the number obtained in (2).
 * Compare the information obtained in the ways mentioned above by plotting the two factors over time, and against one-another. The graph comparing the Coupling Factor and Growth Factor for a particular project can then be analyzed to determine if the project’s complexity is increasing over time relative to its growth. The graph can also be compared to the comparison graphs of other projects, and conclusions about project health can be drawn.
 
-#### Data Sources
-* We will test our research question by analyzing three codebases with our tool.
+#### Original Data Sources
+* We will originally test our research question by analyzing three codebases with our tool.
 <br /> 1) [Django](https://github.com/django/django)
 <br /> 2) [Pyramid](https://github.com/Pylons/pyramid)
 <br /> 3) [Flask](https://github.com/mitsuhiko/flask)
@@ -133,10 +134,10 @@ Development: Create server and client code that exchange data	| This was success
 #### Sprint 3	(April 7th - April 21st)
 Plan | Accomplished 
  ---- | ----
-Development: Create a worker script					     | In progress
-Development: Estabolish sending data between client, server and databse      | This was completed using json objects
-Development: Inform user of current script status during runtime	     | In progress
-Development: Allow users to select a repo from a list of ones previously run | In progress
+Development: Create a worker script					     | Completed - now constantly running.
+Development: Create highly robust, usable web applicatio		     | Completed - Angular web app complete.
+Development: Inform user of current script status during runtime	     | TODO - future work.
+Development: Allow users to select a repo from a list of ones previously run | Completed - Angular repeated list shows previously run repos.
 
 
 ####  Scrum Meeting Times
