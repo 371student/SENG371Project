@@ -4,6 +4,11 @@
 2. Enter a repo url
 3. See results
 
+OR <br>
+ 1. Navigate to http://www.growthcoupling.com/ <br>
+ 2. Select an existing repo <br>
+ 3. See results <br>
+
 #### Project Question
 * How is the growth of a software project affected by coupling? 
 * Insights on the development process itself can be made by knowing how adding dependencies (or increasing coupling) affects the growth of the project.
@@ -139,6 +144,9 @@ Development: Allow users to select a repo from a list of ones previously run | I
 * Bi-weekly hangouts meetings
 
 #### Team Member Roles
+* Chris - Data scientist and lead front-end developer
+* Richard - Back-end developer
+* Sarah - Apprentice front-end developer and readme updater
 
 Task | Chris | Richard  | Sarah
 ---- | ---- | ---- | ---- 
@@ -158,9 +166,11 @@ Development: Estabolish sending data between client, server and databse |  | X |
 Development: Inform user of current script status during runtime | X | X | X
 Development: Allow users to select a repo from a list of ones previously run | X |  | X
 
+
 ### Improvements From Project 1
 1. No downloadable content - Project 1 required the user to clone our repository and install all the dependencies. For project 2, we use a server to run our script where the user simply supplies the reporsitory  url. 
 2. Graph output - In project 1, the user gathered the .csv files and choose a program of their choice to view th data and manually graph it. In order to increate automation, our tool now uses d3 to produce graphical representations of the outputted data, to make it immediately meaningful for users.
 3. Increased user preformance - In poject 1, our tool would run for hours on sufficiently large repositories. By storing repositories in our database, we can simply pull the data from the database rather than running the script again. 
 4. Created a user interface - Project 1 required the user to run linux commands in the terminal and follow a tedious process in order to get the desired output. By creating a web application we created a clean UI for our users. 
+5. We improved upon our project 1 trendlines. In project 2 they account for a higher degree polynomual allowing for more accurate results.
 
