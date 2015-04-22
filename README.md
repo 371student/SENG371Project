@@ -5,7 +5,8 @@
 3. Navigate back to the home page.
 4. Refresh the page to view the repository list
 
-OR <br>
+OR 
+
 1. Navigate to http://www.growthcoupling.com/
 2. Select a previously-run repository
 3. View data graphed over time
