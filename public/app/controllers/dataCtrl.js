@@ -10,7 +10,7 @@ angular.module('dataCtrl', ['repoService'])
 	    width = 960 - margin.left - margin.right,
 	    height = 960- margin.top - margin.bottom;
 
-		var parseDate = d3.time.format("%YY%mm").parse;
+		var parseDate = d3.time.format("%Y-%m").parse;
 
 		var x = d3.time.scale()
 		    .range([0, width]);
@@ -30,8 +30,8 @@ angular.module('dataCtrl', ['repoService'])
 
 		var line = d3.svg.line()
 		    .interpolate("basis")
-		    .x(function(d) { return x(d.date); })
-		    .y(function(d) { return y(d.temperature); });
+		    .x(function(d) { return x(d.yymm); })
+		    .y(function(d) { return y(d.growth_factor); });
 
 		var svg = d3.select(".chart").append("svg")
 		    .attr("width", width + margin.left + margin.right)
@@ -43,14 +43,18 @@ angular.module('dataCtrl', ['repoService'])
 		// d3.json("app/views/pages/data.json", function(error, data) {
 
 			console.log(Repo.graphData.data);
-		  d3.json(Repo.graphData.data, function(error, data) {
-		  // color.domain(d3.keys(data[0]).filter(function(key) { return key !== "yymm"; }));
+		d3.json(Repo.graphData.data, function(error, data) {
+		  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "yymm"; }));
+
+		  data.forEach(function(d) {
+		    d.date = parseDate(d.date);
+		  });
 
 		  var line_name = color.domain().map(function(name) {
 		    return {
 		      name: name,
 		      values: Repo.graphData.data.map(function(d) {
-		        return {date: d.yymm, temperature: +d[name]};
+		        return {date: d.yymm, growth_factor: +d[name]};
 		      })
 		    };
 		  });
