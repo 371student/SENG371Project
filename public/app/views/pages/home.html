@@ -41,7 +41,7 @@
 					</thead>
 					<tbody ng-repeat="repo in main.repositories | orderBy:'name'">
 						<tr>
-							<td><a ng-click='main.goToData(repo.url)'><strong>{{ repo.name }}</strong></a></td>
+							<td><a class="repo_links" onmouseover="" ng-click='main.goToData(repo.url)'><strong>{{ repo.name }}</strong></a></td>
 							<!-- <td><a href='{{ repo.url }}'>{{ repo.name }}</a></td> -->
 							<td>{{ repo.status }}</td>
 						</tr>
