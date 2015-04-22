@@ -8,13 +8,16 @@ td {
   font-weight: bold;
 }
 
-a.menu_links { 
+a.repo_links:hover { 
   cursor: pointer; 
 }
 
+a {
+  color: lightblue;
+}
+
 .repeatWheel {
-  height: 100%
-  max-height: 21px;
+  height: 21px;
   width: auto;
 }
 
