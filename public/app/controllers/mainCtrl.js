@@ -26,12 +26,12 @@ angular.module('mainCtrl', ['repoService'])
 		/* MAIN
 		---------------------------------------*/
 		vm.goToData = function(repoUrlForData) {
-			vm.processing = true;
+			vm.processingRepo = true;
 
 			Repo.getOne(repoUrlForData)
 				.success(function(data) {
-					vm.repoData = data;
-					vm.processing = false;
+					Repo.prepData(data);
+					vm.processingRepo = false;
 
 					$location.path('/data');
 				});

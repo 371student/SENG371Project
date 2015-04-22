@@ -1,18 +1,11 @@
-<div>
-	<h1>Test Data Page</h1>
-	<div class='chart'></div>
-</div>
+<div class='graphDiv'>
+	<h3>Data for <strong>{{ data.currentRepo }}</strong></h3>
 
-<div class="section hero">
-	<div class="container">
-		<div class="row">
-		<!-- <div class="two-thirds column"> -->
-				<button type="submit" ng-click="data.backHome()" class="button button-primary">
-					<span>
-						Back to list
-					</span>
-				</button>
-<!-- 			</div> -->
-		</div>
-	</div>
+	<button type="submit" ng-click="data.backHome()" class="button-primary">
+		<span>
+			Back to list
+		</span>
+	</button>
+
+	<span class='chart'></span>
 </div>
