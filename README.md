@@ -16,7 +16,7 @@ OR <br>
 
 #### Methodology
 * Write a script that would iteratively move through the history of the master branch of a software project, and then use [Snakefood](http://furius.ca/snakefood/) to capture the complexity of the dependency graph at that point in time. This complexity metric - or “Coupling Factor” - will be calculated as the ratio of dependency-graph edges to nodes (at that point in time). (Note: as Snakefood only provides coupling information for Python projects, our tool is also restricted to Python projects at this time)
-* Edit the source code of [GitStats](https://github.com/hoxu/gitstats) to serve monthly-growth information about the same project. This growth metric - or “Growth Factor” - will be calculated as follows:
+* Use git to count the number of months. We use 1 commit for each month, the total commits is equal to the growth factor. Edit the source code of [GitStats](https://github.com/hoxu/gitstats) to serve monthly-growth information about the same project. This growth metric - or “Growth Factor” - will be calculated as follows:
   1. Divide the average of Commits/Month by the average of the Coupling Factor.
   2. Multiply this number by 4.
   3. Growth factor is equal to to Commits/Month divided by the number obtained in 2.
