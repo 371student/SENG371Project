@@ -4,15 +4,22 @@ angular.module('repoService', [])
 
 		// create a new object
 		var repoFactory = {};
+		repoFactory.graphData = {};
+
+		// store single repo dataset for dataCtrl graphing
+		repoFactory.prepData = function(data) {
+			repoFactory.graphData = data;
+		};
 
 		// get every repo's data
 		repoFactory.all = function() {
 			return $http.get('/api/repos');
 		};
 
+		// get one repo's data
 		repoFactory.getOne = function(repoUrlForData) {
 			return $http.post('/api/repo', {'url': repoUrlForData});
-		}
+		};
 
 		// add a new repo's data
 		repoFactory.add = function(repoUrl) {
