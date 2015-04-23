@@ -181,7 +181,7 @@ Development: Allow users to select a repo from a list of ones previously run | X
 ![alt tag](http://i.imgur.com/SlIeZmO.png)
 
 #### Django
-
+![alt tag](http://i.imgur.com/ASyiOMW.png)
 
 #### Pyramid
 ![alt tag](http://i.imgur.com/5yg0OMg.png)
